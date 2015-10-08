@@ -62,10 +62,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (false) {
 	  require('angular-mocks/angular-mocks');
 	}
-
-	angular.module('project.mobile', ['ui.router',
+	var ngModule = angular.module('project.mobile', ['ui.router',
 	// features
-	__webpack_require__(12).name]).constant('d3', __webpack_require__(8)).constant('_', __webpack_require__(9));
+	__webpack_require__(12)(angular).name]).constant('d3', __webpack_require__(8)).constant('_', __webpack_require__(9)).config(["$urlRouterProvider", function ($urlRouterProvider) {
+	  $urlRouterProvider.otherwise('/feature');
+	}]);
+
+	angular.element(document).ready(function () {
+	  angular.bootstrap(document.body, [ngModule.name], { strictDi: true });
+	});
 
 /***/ },
 /* 1 */,
@@ -418,8 +423,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
-	exports['default'] = function (ngModule) {
-	  __webpack_require__(13)(ngModule);
+	exports['default'] = function (angular) {
+	  var ngModule = angular.module('project.mobile.feature', []).config(["$stateProvider", function ($stateProvider) {
+	    $stateProvider.state('feature', {
+	      url: '/feature',
+	      views: {
+	        'main': {
+	          template: __webpack_require__(13),
+	          controller: 'FeatureCtrl',
+	          controllerAs: 'feature'
+	        }
+	      }
+	    });
+	  }]);
+
+	  __webpack_require__(14)(ngModule);
+	  __webpack_require__(16)(ngModule);
+	  return ngModule;
 	};
 
 	module.exports = exports['default'];
@@ -428,7 +448,122 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports) {
 
+	module.exports = "<h1>Mobile</h1>\n<hello></hello>"
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _classCallCheck = __webpack_require__(15)['default'];
+
+	exports.__esModule = true;
+
+	exports['default'] = function (ngModule) {
+	  var FeatureCtrl =
+	  // @ngInject
+	  function FeatureCtrl() {
+	    _classCallCheck(this, FeatureCtrl);
+
+	    this.bindMe = 'Hello world';
+	  };
+
+	  ngModule.controller('FeatureCtrl', FeatureCtrl);
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
 	"use strict";
+
+	exports["default"] = function (instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	};
+
+	exports.__esModule = true;
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	exports['default'] = function (ngModule) {
+
+	  ngModule.directive('hello', function () {
+	    __webpack_require__(17);
+	    return {
+	      restrict: 'E',
+	      scope: {},
+	      template: __webpack_require__(19),
+	      controllerAs: 'vm',
+	      controller: function controller() {
+	        var vm = this;
+	        vm.greeting = 'Hello Webpack';
+	      }
+	    };
+	  });
+
+	  if (false) {
+	    require('./hello.directive.spec')(ngModule);
+	  }
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(18);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/cssnext-loader/index.js!./hello.css", function() {
+				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/cssnext-loader/index.js!./hello.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".hello span {\n  color: blue;\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"hello\">\n  <span>{{vm.greeting}}</span>\n</div>"
 
 /***/ }
 /******/ ])
