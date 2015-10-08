@@ -1,0 +1,16 @@
+:root {
+  --domo-blue: #99ccee;
+
+  /* Base font size in pixels. This would result in 14px on desktop */
+  --base-font-size: 14;
+
+  /* How large the line height is as a multiple of font size */
+  --base-line-height: 1.5;
+
+  --leading: calc(var(--base-line-height) * 1rem);
+
+  /* Rate of growth for headings
+   * I actually like this to be slightly smaller then the leading. Makes for tight headings.
+   */
+  --scale: 1.414;
+}

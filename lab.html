@@ -1,0 +1,214 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://domoapps.s3.amazonaws.com/cdn/domo-bits/v1/icon-bits.css">
+    <style>
+      body{
+        background: red;
+        background: #fbfbfb;
+      }
+
+      iframe{
+        border: 1px solid #e4e5e5;
+        background: #fff;
+      }
+
+      .container {
+        width: 100%;
+        text-align: center;
+      }
+
+      .wrapper{
+        margin: 36px 18px;
+        margin-top: 36px;
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      .close {
+        pointer-events: none;
+        position: absolute;
+        width: 375px;
+        height: 44px;
+      }
+
+      .close span {
+        padding: 10px;
+        font-size: 24px;
+        box-sizing: border-box;
+        float: right;
+        text-align: center;
+        width: 44px;
+        height: 44px;
+        color: #555;
+      }
+
+      .size{
+        float: right;
+        color:  #dddddd;
+        font-size: 12px;
+        font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      }
+
+      .menu-container {
+        position: fixed;
+        box-sizing: border-box;
+        left: 0;
+        background-color: #f2f2f2;
+        color: #555;
+        border: 1px solid #e5e5e5;
+        transition:transform 0.25s ease-in-out;
+        transform: translate3d(-250px, 0, 0);
+      }
+      .menu-container.open {
+        transform: translate3d(0px, 0, 0);
+      }
+
+      .menu-button {
+        border: 1px solid #e5e5e5;
+        border-left-width: 0px;
+        height: 44px;
+        width: 44px;
+        position: absolute;
+        left: 250px;
+        margin-top: -1px;
+        background-color: #f2f2f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+        cursor: move;
+      }
+
+      .icon {
+        max-width: 50%;
+        pointer-events: none;
+      }
+
+      .menu-options {
+        box-sizing: border-box;
+        padding: 15px;
+        width: 250px;
+        height: 250px;
+        background-color: #f2f2f2;
+        color: #555;
+      }
+
+      .menu-options form {
+        margin: 0;
+      }
+
+      .menu-options input {
+        width: 100%;
+        padding: 10px;
+        display: inline-block;
+        border: 1px solid #e4e5e5;
+        box-shadow: inset 0 1px 3px #ddd;
+        border-radius: 4px;
+        vertical-align: middle;
+        box-sizing: border-box;
+      }
+
+      .menu-options button {
+        font-size: 14px;
+        background-color: #73B0D7;
+        margin-top: 15px;
+        padding: 15px;
+        width: 100%;
+        display: inline-block;
+        zoom: 1;
+        line-height: normal;
+        white-space: nowrap;
+        vertical-align: middle;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        box-sizing: border-box;
+        border-radius: 2px;
+        border: none;
+        color: #fff;
+      }
+
+      .unselectable {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js"></script>
+  </head>
+
+  <body>
+    <div class="container unselectable">
+      <div class="wrapper" style="width: 1165px; height: 862px;">
+        <iframe id="desktop" style="width: 100%; height: 100%;"></iframe>
+        <div class="size">1165 x 862</div>
+      </div>
+
+      <div class="wrapper" style="width: 375px; height: 667px;">
+        <div class="close"><span>✕<span></div>
+        <iframe id="mobile" style="width: 100%; height: 100%;"></iframe>
+        <div class="size">375 x 667</div>
+      </div>
+    </div>
+
+    <div class="menu-container" style="top: 88px;">
+      <div class="menu-button" draggable="true"><i class="icon icon-gear unselectable"></i></div>
+      <div class="menu-options unselectable">
+        <form>
+          <input id="locale" type="text" name="locale" value="en-US" />
+          <button type="submit" id="setLocale">Set Locale</button>
+        </form>
+        <button id="goDesktop">Go to Desktop</button>
+        <button id="goMobile">Go to Mobile</button>
+      </div>
+    </div>
+    <script>
+      (function (global) {
+        var re = /locale=(\w{2})-?/ig
+        var match = re.exec(location.search);
+        var locale = match ? match[1] : 'en-US';
+        document.querySelector('#desktop').src = '/desktop/index.html?userId=27&customer=dev&locale='+locale+'&platform=desktop';
+        document.querySelector('#mobile').src = '/mobile/index.html?userId=27&customer=dev&locale='+locale+'&platform=mobile';
+
+        var open = false;
+        document.querySelector('.menu-button').onclick = function () {
+          open = open ? false : true
+          if (open) {
+            document.querySelector('.menu-container').className = 'menu-container';
+          } else {
+            document.querySelector('.menu-container').className = 'menu-container open';
+          }
+        };
+
+        document.querySelector('#setLocale').onclick = function () {
+          locale = document.querySelector('#locale').value;
+          document.querySelector('#desktop').src = '/desktop/index.html?userId=27&customer=dev&locale='+locale+'&platform=desktop';
+          document.querySelector('#mobile').src = '/mobile/index.html?userId=27&customer=dev&locale='+locale+'&platform=mobile';
+        };
+
+        document.querySelector('#goDesktop').onclick = function () {
+          location.href = '/desktop/index.html?userId=27&customer=dev&locale='+locale+'&platform=desktop';
+        };
+
+        document.querySelector('#goMobile').onclick = function () {
+          location.href = '/mobile/index.html?userId=27&customer=dev&locale='+locale+'&platform=mobile';
+        };
+
+        var drag = d3.behavior.drag();
+        d3.select('.menu-button').call(drag);
+        drag.on('drag', function () {
+          var coords = d3.mouse(document.body);
+          var top = coords[1] + 'px';
+          if (coords[1] >= 1) {
+            d3.select('.menu-container').style('top', top);
+          }
+        });
+
+      }(this));
+    </script>
+  </body>
+
+</html>
