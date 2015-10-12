@@ -11,10 +11,9 @@
 
 ## Technology
 - [webpack](http://webpack.github.io/)
-- [typescript](http://www.typescriptlang.org/)
-- [sass](http://sass-lang.com)
+- [ES 2016 via Babel](https://babeljs.io/docs/learn-es2015/)
+- [postcss & cssnext](http://cssnext.io/)
 - [angular 1.x](https://angularjs.org/)
-- [gulp](http://gulpjs.com/)
 
 ## Features
 - Unit Testing
@@ -37,9 +36,6 @@
 ## DomoApp Specific Features
 - Platform Detection / Routing
 - Locale Detection / Routing
-- Domo Bits Component Library
-- Da Bits Component Library
-- Ionic/SASS?
 - "Lab" view
 
 ## Folder Structure
