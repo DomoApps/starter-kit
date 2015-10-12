@@ -2,8 +2,8 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>Desktop</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <title>{%= o.htmlWebpackPlugin.options.title %}</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
@@ -15,5 +15,9 @@
     <h1>Desktop</h1>
     <div ui-view="main"></div>
   </div>
+  {% if (o.htmlWebpackPlugin.options.ON_TEST) { %}
+    <script src="/webpack-dev-server.js"></script>
+  {% } %}
+  <!-- {%= o.htmlWebpackPlugin.options.pkg.name + ' v' + o.htmlWebpackPlugin.options.pkg.version + ' built on ' + new Date() %} -->
 </body>
 </html>

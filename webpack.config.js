@@ -2,19 +2,23 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
-var cssnext = require('cssnext');
-// var autoprefixer = require('autoprefixer');
-// var precss = require('precss');
-// var cssnano = require('cssnano');
+
+// postcss plugins
+var cssnext = require('postcss-cssnext');
+var postcssImport = require('postcss-import');
+var reporter = require('postcss-reporter');
+var cssnano = require('cssnano');
+var messages = require('postcss-browser-reporter');
+var nesting = require('postcss-nesting');
 
 var config = {
   context: __dirname + '/src',
   // the entry point of your library
   entry: {
-    common: './common/index.js',
+    switcher: './switcher.js',
     desktop: './desktop/index.js',
     mobile: './mobile/index.js',
-    switcher: './switcher.js'
+    common: './common/index.js'
   },
   // where 3rd-party modules can reside
   resolve: {
@@ -65,33 +69,52 @@ var config = {
   ],
 
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.ResolverPlugin(
+      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
+    ),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: '/commons.js',
+      minChunks: 3,
+      chunks: ['common', 'desktop', 'mobile'],
+    }),
     new ngAnnotatePlugin({
       add: true,
       remove: true
     }),
     new HtmlWebpackPlugin({
-      title: 'Switcher', 
-      chunks: ['switcher']
+      title: 'Switcher',
+      dev: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV, 
+      pkg: require('./package.json'),
+      chunks: ['commons', 'switcher']
     }),
     new HtmlWebpackPlugin({
       title: 'Lab',
+      dev: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
+      pkg: require('./package.json'),
       template: 'lab.html',
       filename: 'lab.html',
       chunks: []
     }),
     new HtmlWebpackPlugin({
-      title: 'Desktop', 
+      title: 'Desktop',
+      dev: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
+      pkg: require('./package.json'),
       template: 'src/desktop/desktop.html', // Load a custom template
       inject: 'body', // Inject all scripts into the body
       filename: 'desktop/index.html',
-      chunks: ['common', 'desktop']
+      chunks: ['commons', 'common', 'desktop']
     }),
     new HtmlWebpackPlugin({
-      title: 'Mobile', 
+      title: 'Mobile',
+      dev: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
+      pkg: require('./package.json'),
       template: 'src/mobile/mobile.html', // Load a custom template
       inject: 'body', // Inject all scripts into the body
       filename: 'mobile/index.html',
-      chunks: ['common', 'mobile']
+      chunks: ['commons', 'common', 'mobile']
     }),
     new webpack.DefinePlugin({
       ON_DEV: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
@@ -109,7 +132,7 @@ var config = {
       },
       {
         test:   /\.css$/,
-        loader: 'style!css!cssnext',
+        loader: 'style!css!postcss',
         exclude: /(node_modules|bower_components)/
       },
       {
@@ -127,11 +150,25 @@ var config = {
     ]
   },
 
-  // postcss: function () {
-  //   return [cssnext()];
-  // },
-  cssnext: {
-    browsers: "last 2 versions",
+  postcss: function () {
+    var postcssPlugins = [
+      postcssImport({
+        onImport: function (files) {
+          files.forEach(this.addDependency);
+        }.bind(this)
+      }),
+      nesting({ /* options */ }),
+      cssnext({browsers: 'last 2 versions'}),
+      reporter()
+    ];
+
+    if (process.env.NODE_ENV === 'production') {
+      postcssPlugins.push(cssnano());
+    } else {
+      postcssPlugins.push(messages());
+    }
+
+    return postcssPlugins;
   },
 
   devtool: 'source-map',
