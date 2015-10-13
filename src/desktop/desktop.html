@@ -15,9 +15,6 @@
     <h1>Desktop</h1>
     <div ui-view="main"></div>
   </div>
-  {% if (o.htmlWebpackPlugin.options.ON_TEST) { %}
-    <script src="/webpack-dev-server.js"></script>
-  {% } %}
   <!-- {%= o.htmlWebpackPlugin.options.pkg.name + ' v' + o.htmlWebpackPlugin.options.pkg.version + ' built on ' + new Date() %} -->
 </body>
 </html>

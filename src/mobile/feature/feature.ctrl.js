@@ -1,10 +1,10 @@
 export default ngModule => {
   class FeatureCtrl {
     // @ngInject
-    constructor () {
+    constructor ($http) {
       this.bindMe = 'Hello world';
     }
   }
 
-  ngModule.controller('FeatureCtrl', FeatureCtrl)
+  ngModule.controller('FeatureCtrl', FeatureCtrl);
 };

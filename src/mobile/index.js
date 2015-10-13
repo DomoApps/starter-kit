@@ -4,6 +4,10 @@ const angular = require('angular');
 if (ON_TEST) {
   require('angular-mocks/angular-mocks');
 }
+if (ON_DEV) {
+  require('webpack/hot/dev-server');
+}
+
 var ngModule = angular
   .module('project.mobile', [
     'ui.router',

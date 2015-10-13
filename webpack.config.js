@@ -12,6 +12,7 @@ var messages = require('postcss-browser-reporter');
 var nesting = require('postcss-nesting');
 
 var config = {
+  cache: false,
   context: __dirname + '/src',
   // the entry point of your library
   entry: {
@@ -27,7 +28,7 @@ var config = {
 
   output: {
     // where to put standalone build file
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, '/dist'),
     publicPath: '',
     filename: '/[name]/[name].js',
     sourceMapFilename: '[file].map',
@@ -157,7 +158,7 @@ var config = {
           files.forEach(this.addDependency);
         }.bind(this)
       }),
-      nesting({ /* options */ }),
+      nesting(),
       cssnext({browsers: 'last 2 versions'}),
       reporter()
     ];
@@ -176,13 +177,15 @@ var config = {
   devServer: {
     contentBase: 'dist/',
     noInfo: false, //  --no-info option
-    hot: true,
-    inline: true
+    hot: false,
+    inline: false
   }
 };
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+} else {
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = config;

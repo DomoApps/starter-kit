@@ -1,0 +1,15 @@
+{
+  "name": "Project",
+  "mapping": [
+    {
+      "alias": "sales",
+      "dataSetId": "",
+      "fields": []
+    }
+  ],
+  "version": "0.0.1",
+  "size": {
+    "width": 5,
+    "height": 3
+  }
+}

@@ -1,5 +1,5 @@
 .hello {
   @nest & span {
-    color: blue;
+    color: red;
   }
 }

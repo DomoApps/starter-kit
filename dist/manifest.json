@@ -1,0 +1,16 @@
+{
+  "name": "Webpack Proxy",
+  "mapping": [
+    {
+      "alias": "widgets",
+      "dataSetId": "2e13ca5b-7705-4114-bcc8-61fb9963b9a1",
+      "fields": []
+    }
+  ],
+  "version": "0.0.1",
+  "size": {
+    "width": 5,
+    "height": 3
+  },
+  "id": "5c894408-3d4e-450b-be2e-5714230ac0af"
+}
