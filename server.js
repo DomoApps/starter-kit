@@ -2,8 +2,9 @@
 var WebpackDevServer = require('webpack-dev-server');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config');
-webpackConfig.output.path = '/';
+    webpackConfig.output.path = '/';
 var compiler = webpack(webpackConfig);
+
 // proxy
 var path = require('path');
 var fs = require('fs-extra');
@@ -117,7 +118,6 @@ function createContext (designId, mapping) {
     request(options, (err, res) => {
       resolve(res.body[0] ? res.body[0] : {id: 0});
     });
-    
   });
 }
 
@@ -144,8 +144,6 @@ function checkSession () {
         // TODO: remove this once the /domoweb/auth/validate service has shipped to prod
         resolve(true);
       }
-    })
-    
-    
+    });
   });
 }
