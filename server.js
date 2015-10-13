@@ -11,7 +11,7 @@ var glob = require('glob');
 var request = require('request');
 var Domo = require('ryuu-client');
 var portfinder = require('portfinder');
-portfinder.basePort = 3000;
+    portfinder.basePort = 3000;
 var home = Domo.getHomeDir();
 var mostRecent = getMostRecentLogin();
 var domainPromise = getDomoappsDomain();
@@ -38,9 +38,6 @@ server.app.get('/data/v1/:query', (req, res) => {
       var cookie = request.cookie(auth);
       j.setCookie(cookie, baseUrl);
       var referer = req.headers.referer.indexOf('?') >= 0 ? `${req.headers.referer}&context=${context.id}` : `${req.headers.referer}?userId=27&customer=dev&locale=en-US&platform=desktop&context=${context.id}`;
-      console.log('base', baseUrl);
-      console.log('url', url);
-      console.log('ref', referer);
       request({
         url: url, 
         jar: j, 
@@ -51,7 +48,7 @@ server.app.get('/data/v1/:query', (req, res) => {
       }).pipe(res);
     })
     .catch(err => {
-      console.log(err);
+      console.warn(err);
     });
 });
 
