@@ -1,6 +1,6 @@
 ![DomoApps Starter](https://domoapps.s3.amazonaws.com/cdn/images/DomoAppsLogo.png)
 
-# da-starter
+# da-webpack
 ## Usage
 - `$ npm start` to run webpack-dev-server
 - `$ npm test` to run unit tests
@@ -44,18 +44,17 @@
 ├── project config files [webpack, karma, typescript, jshint, etc...]
 |
 ├── src
-|    ├── common
-|    |    ├── directives // place for common components
+|    ├── common // place for common assets
+|    |    ├── directives
 |    |    ├── services
 |    |    └── css
 |    |
 |    ├── desktop // a folder for each platfirn
 |    |    ├── feature
-|    |    |    ├── feature.directive.js
-|    |    |    ├── feature.factory.js
+|    |    |    ├── feature.ctrl.js
 |    |    |    ├── feature.css
-|    |    |    ├── feature.test.js // tests
-|    |    |    └── index.js // CommonJS module
+|    |    |    ├── feature.spec.js // tests
+|    |    |    └── index.js
 |    |    |
 |    |    ├── ...
 |    |    └── index.js
