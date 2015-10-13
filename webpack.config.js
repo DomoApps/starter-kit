@@ -176,14 +176,14 @@ var config = {
 
   devServer: {
     contentBase: 'dist/',
-    noInfo: false, //  --no-info option
+    noInfo: false,
     hot: false,
     inline: false
   }
 };
 
 if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
 } else {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 }

@@ -38,7 +38,11 @@ server.app.get('/data/v1/:query', (req, res) => {
       var auth = `DA-SID-${getCustomer()}="${mostRecent.sid}"`;
       var cookie = request.cookie(auth);
       j.setCookie(cookie, baseUrl);
-      var referer = req.headers.referer.indexOf('?') >= 0 ? `${req.headers.referer}&context=${context.id}` : `${req.headers.referer}?userId=27&customer=dev&locale=en-US&platform=desktop&context=${context.id}`;
+
+      var referer = req.headers.referer.indexOf('?') >= 0 
+        ? `${req.headers.referer}&context=${context.id}` // jshint ignore:line
+        : `${req.headers.referer}?userId=27&customer=dev&locale=en-US&platform=desktop&context=${context.id}`; // jshint ignore:line
+
       request({
         url: url, 
         jar: j, 
@@ -94,7 +98,7 @@ function getDomoappsDomain () {
   var auth = `SID="${mostRecent.sid}"`;
   var cookie = request.cookie(auth);
   j.setCookie(cookie, `https://${mostRecent.instance}`);
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     request({url: `https://${mostRecent.instance}/api/content/v1/mobile/environment`, jar: j}, (err, res) => {
       if (res.statusCode === 200){
         resolve(`https://${uuid}.${JSON.parse(res.body).domoappsDomain}`);
@@ -107,7 +111,7 @@ function getDomoappsDomain () {
 }
 
 function createContext (designId, mapping) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     var options = {
       url: `https://${mostRecent.instance}/domoapps/apps/v2/contexts`,
       method: 'POST',

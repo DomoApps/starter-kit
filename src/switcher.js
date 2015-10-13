@@ -1,7 +1,7 @@
 /*
  * DO NOT EDIT ME!
  */
-var re = /platform=(\w+)\W*/ig
+var re = /platform=(\w+)\W*/ig;
 var match = re.exec(location.search);
 
 if (match) {

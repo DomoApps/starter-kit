@@ -1,7 +1,7 @@
 export default ngModule => {
   class FeatureCtrl {
     // @ngInject
-    constructor ($http) {
+    constructor () {
       this.bindMe = 'Hello world';
     }
   }
