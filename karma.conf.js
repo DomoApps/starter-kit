@@ -5,6 +5,7 @@ var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 // laod webpack config here for for webpack preprocessor
 var webpackConfig = require('./webpack.config');
+delete webpackConfig.devtool;
 webpackConfig.cache = true;
 webpackConfig.externals = [{angular: 'angular'}];
 webpackConfig.plugins = [
@@ -23,9 +24,13 @@ webpackConfig.plugins = [
     remove: true
   }),
   new webpack.DefinePlugin({
-    ON_TEST: true
+    ON_DEV: false,
+    ON_TEST: true,
+    ON_PROD: true
   })
 ];
+
+
 
 var file;
 var entry = [

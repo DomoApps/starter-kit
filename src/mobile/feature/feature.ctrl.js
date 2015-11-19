@@ -1,4 +1,4 @@
-export default ngModule => {
+module.exports = ngModule => {
   class FeatureCtrl {
     // @ngInject
     constructor () {

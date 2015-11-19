@@ -1,4 +1,4 @@
-export default ngModule => {
+module.exports = ngModule => {
   describe('hello', () => {
     beforeEach(window.module(ngModule.name));
 

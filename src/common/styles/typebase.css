@@ -1,42 +1,38 @@
-@import 'variables.css';
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 /* Setup */
 html {
 	/* Change default typefaces here */
-	font-family: serif;
-	font-size: calc(var(--base-font-size) - 0px);
-	font-size: calc(var(--base-font-size) / 16 * 100%);
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-size: $baseFontSize / 16 * 100%;
 	/* Make everything look a little nicer in webkit */
 	-webkit-font-smoothing: antialiased;
-	text-size-adjust: auto;
+	text-size-adjust: auto
 }
 
 /* Copy & Lists */
 p {
-	line-height: var(--leading);
-	margin-top: var(--leading);
+	line-height: $leading;
+	margin-top: $leading;
 	margin-bottom: 0;
 }
 ul,
 ol {
-	margin-top: var(--leading);
-	margin-bottom: var(--leading);
-}
-ul li,
-ol li {
-	line-height: var(--leading);
-}
-ul ul,
-ol ul,
-ul ol,
-ol ol {
-	margin-top: 0;
-	margin-bottom: 0;
+	margin-top: $leading;
+	margin-bottom: $leading;
+	li {
+		line-height: $leading;
+	}
+	ul,
+	ol {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
 }
 blockquote {
-	line-height: var(--leading);
-	margin-top: var(--leading);
-	margin-bottom: var(--leading);
+	line-height: $leading;
+	margin-top: $leading;
+	margin-bottom: $leading;
 }
 
 /* Headings */
@@ -47,55 +43,55 @@ h4,
 h5,
 h6 {
 	/* Change heading typefaces here */
-	font-family: sans-serif;
-	margin-top: var(--leading);
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	margin-top: $leading;
 	margin-bottom: 0;
-	line-height: var(--leading);
+	line-height: $leading;
 }
 h1 {
-	font-size: calc(3 * var(--scale) * 1rem);
-	line-height: calc(3 * var(--leading));
-	margin-top: calc(2 * var(--leading));
+	font-size: 3 * $scale * 1rem;
+	line-height: 3 * $leading;
+	margin-top: 2 * $leading;
 }
 h2 {
-	font-size: calc(2 * var(--scale) * 1rem);
-	line-height: calc(2 * var(--leading));
-	margin-top: calc(2 * var(--leading));
+	font-size: 2 * $scale * 1rem;
+	line-height: 2 * $leading;
+	margin-top: 2 * $leading;
 }
 h3 {
-	font-size: calc(1 * var(--scale) * 1rem);
+	font-size: 1 * $scale * 1rem;
 }
 h4 {
-	font-size: calc(var(--scale) / 2 * 1rem);
+	font-size: $scale / 2 * 1rem;
 }
 h5 {
-	font-size: calc(var(--scale) / 3 * 1rem);
+	font-size: $scale / 3 * 1rem;
 }
 h6 {
-	font-size: calc(var(--scale) / 4 * 1rem);
+	font-size: $scale / 4 * 1rem;
 }
 
 /* Tables */
 table {
-	margin-top: var(--leading);
+	margin-top: $leading;
 	border-spacing: 0px;
 	border-collapse: collapse;
 }
 td,
 th {
 	padding: 0;
-	line-height: calc(var(--base-line-height) * var(--base-font-size) - 0px);
+	line-height: $baseLineHeight * $baseFontSize - 0px;
 }
 
 /* Code blocks */
 code {
 	/* Forces text to constrain to the line-height. Not ideal, but works. */
-	vertical-align: bottom;
+ 	vertical-align: bottom;
 }
 
 /* Leading paragraph text */
 .lead {
-	font-size: calc(var(--scale) * 1rem);
+	font-size: $scale * 1rem;
 }
 
 /* Hug a the block above you */

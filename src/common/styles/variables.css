@@ -1,16 +1,15 @@
-:root {
-  --domo-blue: #99ccee;
+/* Typesetting variables.*/
+/* in pixels. This would result in 22px on desktop */
+$baseFontSize: 12;
 
-  /* Base font size in pixels. This would result in 14px on desktop */
-  --base-font-size: 14;
+/* how large the line height is as a multiple of font size */
+$baseLineHeight: 1.5;
+$leading: $baseLineHeight * 1rem;
 
-  /* How large the line height is as a multiple of font size */
-  --base-line-height: 1.5;
+/* Rate of growth for headings
+ * I actually like this to be slightly smaller then the leading. Makes for tight headings. 
+ */
+$scale: 1.414;
 
-  --leading: calc(var(--base-line-height) * 1rem);
-
-  /* Rate of growth for headings
-   * I actually like this to be slightly smaller then the leading. Makes for tight headings.
-   */
-  --scale: 1.414;
-}
+/* Domo Blue Color */
+$domo-blue: #99ccee;

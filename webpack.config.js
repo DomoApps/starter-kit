@@ -4,12 +4,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 // postcss plugins
-var cssnext = require('postcss-cssnext');
+// var cssnext = require('postcss-cssnext');
+// var nesting = require('postcss-nesting');
+var precss = require('precss');
+var postcssImport = require('postcss-import');
 var postcssImport = require('postcss-import');
 var reporter = require('postcss-reporter');
 var cssnano = require('cssnano');
 var messages = require('postcss-browser-reporter');
-var nesting = require('postcss-nesting');
 
 var config = {
   cache: false,
@@ -128,8 +130,13 @@ var config = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel?stage=1&optional=runtime&loose=all',
-        exclude: /(node_modules|bower_components)/
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          presets: ['es2015-loose', 'stage-1'],
+          plugins: ['transform-runtime']
+        }
       },
       {
         test:   /\.css$/,
@@ -151,20 +158,25 @@ var config = {
     ]
   },
 
-  postcss: function () {
+  postcss: function (_webpack) {
     var postcssPlugins = [
       postcssImport({
+        addDependencyTo: _webpack,
         onImport: function (files) {
           files.forEach(this.addDependency);
         }.bind(this)
       }),
-      nesting(),
-      cssnext({browsers: 'last 2 versions'}),
+      precss({browsers: 'last 2 versions'}),
       reporter()
     ];
 
     if (process.env.NODE_ENV === 'production') {
-      postcssPlugins.push(cssnano());
+      postcssPlugins.push(cssnano({
+        mergeRules: false,
+        zindex: false,
+        reduceIdents: false,
+        mergeIdents: false
+      }));
     } else {
       postcssPlugins.push(messages());
     }
@@ -183,7 +195,7 @@ var config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
+  // config.plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
 } else {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 }

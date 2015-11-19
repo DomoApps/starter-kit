@@ -1,4 +1,4 @@
-export default angular => {
+module.exports = angular => {
   var ngModule = angular.module('project.mobile.feature', [])
     .config($stateProvider => {
       $stateProvider

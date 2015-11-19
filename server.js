@@ -60,8 +60,8 @@ server.app.get('/data/v1/:query', (req, res) => {
 // start server
 checkSession().then(() => {
   portfinder.getPort((err, port) => {
-    server.listen(port, 'localhost', () => {
-      console.log(`Listening on http://localhost:${port}/webpack-dev-server/index.html`);
+    server.listen(port, '0.0.0.0', () => {
+      console.log(`Listening on http://0.0.0.0:${port}/webpack-dev-server/index.html`);
     });
   });
 })
