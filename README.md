@@ -90,7 +90,7 @@ You may have to resolve some merge conficts but for the most part, this should b
 ## Style Guides
 - For now, we're writting everything as CommonJS2 modules. 
 - For CSS rules, please see [Reasonable CSS](http://rscss.io/)
-- For JS rules, please see [AirBnB's Styletguide](https://github.com/airbnb/javascript)
+- For JS rules, please see [AirBnB's Styleguide](https://github.com/airbnb/javascript)
 - For Angular rules, please see [John Papa's styleguide](https://github.com/johnpapa/angular-styleguide)
 
 ## Future Plans
