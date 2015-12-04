@@ -9,13 +9,23 @@
     `$ git remote add origin {remote_path}`
 4. push code to new repo `$ git push origin master`
 
-## Usage
+## Usage 
 - `$ npm start` to run webpack-dev-server
 - `$ npm test` to run unit tests
 - `$ npm tdd` to continuously run tests
-- `$ npm run jshint` to lint code
+- `$ npm run eslint` to lint code
 - `$ npm run build` to build (and minify)
 - `$ npm version (patch|minor|major)` to create git release
+
+## Adding or removing platform views (mobile, desktop)
+- Change config values at top of `webpack.config.js`
+
+```js
+// set views to true if you want to include them in you app
+// these can be changed at any time.
+var INCLUDE_DESKTOP_VIEW = true;
+var INCLUDE_MOBILE_VIEW = true;
+```
 
 ## Updates
 To update your build tools, we can use git to handle most of the hard work for us.
