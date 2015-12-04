@@ -7,7 +7,8 @@
 2. rename the remote `$ git remote rename origin generator`
 3. create new repo and create new origin remote that points to that repo.
     `$ git remote add origin {remote_path}`
-4. push code to new repo `$ git push origin master`
+4. Change "name" property in package.json to app name.
+5. push code to new repo `$ git push origin master`
 
 ## Usage 
 - `$ npm start` to run webpack-dev-server
