@@ -1,11 +1,11 @@
 require('./mobile.css');
 const angular = require('angular');
 
-var ngModule = angular
+angular
   .module('da.mobile', [
     'ui.router',
     'ngAnimate',
-    // require('./feature')(angular).name
+    // require('./feature')(angular).name,
   ])
   .constant('$', require('jquery'))
   .constant('d3', require('d3'))

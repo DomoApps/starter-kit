@@ -113,6 +113,13 @@ var config = {
 
   // what loaders to use based on file type.
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader', 
+        exclude: /(node_modules|bower_components)/,
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
@@ -170,6 +177,10 @@ var config = {
     }
 
     return postcssPlugins;
+  },
+
+  eslint: {
+    formatter: require('eslint-friendly-formatter'),
   },
 
   devtool: 'source-map',

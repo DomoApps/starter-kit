@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb/base",
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "ON_DEV": false,
+    "ON_TEST": false,
+    "ON_PROD": false,
+    "sinon": false,
+    "expect": false,
+    "angular": false,
+    "inject": false
+  }
+}

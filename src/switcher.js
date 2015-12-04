@@ -1,26 +1,29 @@
-/*
+/**
  * DO NOT EDIT ME!
  */
-var re = /platform=(\w+)\W*/ig;
-var match = re.exec(location.search);
+const re = /platform=(\w+)\W*/ig;
+const match = re.exec(location.search);
 
 if (match) {
-  var platform = match[1];
-  var params = location.search || '';
-  var url = '/' + platform + '/index.html' + params;
+  const platform = match[1];
+  const params = location.search || '';
+  const url = '/' + platform + '/index.html' + params;
 
-  var request = new XMLHttpRequest();
+  const request = new XMLHttpRequest();
   request.open('GET', url, true);
-  request.onload = function() {
+  request.onload = function onLoad() {
     if (request.status >= 200 && request.status < 400) {
       window.location.replace(url);
     } else {
       window.location.replace('/desktop/index.html' + params);
     }
   };
-  request.onerror = function() { window.location.replace('/desktop/index.html' + params); };
-  request.send();
 
+  request.onerror = function onError() {
+    window.location.replace('/desktop/index.html' + params);
+  };
+
+  request.send();
 } else if (location.hostname === 'localhost') {
   window.location.replace('/lab.html');
 } else {

@@ -1,11 +1,11 @@
 require('./desktop.css');
 const angular = require('angular');
 
-var ngModule = angular
+angular
   .module('da.desktop', [
     'ui.router',
     'ngAnimate',
-    require('./services')(angular).name
+    require('./services')(angular).name,
   ])
   .constant('$', require('jquery'))
   .constant('d3', require('d3'))
