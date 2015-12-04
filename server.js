@@ -20,7 +20,7 @@ var domainPromise = getDomoappsDomain();
 // webpack-dev-server
 var server = new WebpackDevServer(compiler, {
   contentBase: 'dist/',
-  hot: true,
+  hot: false,
   noInfo: true, // set to false if you want to see build info
   stats: { colors: true }
 });

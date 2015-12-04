@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width = device-width, initial-scale=1.0, user-scalable=no">
   <title>Mobile</title>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js" charset="utf-8"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.2/angular-animate.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 </head>
-<body>
+<body ng-cloak ng-app="da.mobile">
   <div id="appContainer">
+    <h1>Mobile</h1>
     <div ui-view="main"></div>
   </div>
   {% if (o.htmlWebpackPlugin.options.dev) { %}<script src="/webpack-dev-server.js"></script>{% } %}

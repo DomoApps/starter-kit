@@ -1,17 +1,15 @@
 require('./desktop.css');
 const angular = require('angular');
 
-if (ON_TEST) {
-  require('angular-mocks/angular-mocks');
-}
-if (ON_DEV) {
-  require('webpack/hot/dev-server');
-}
-
-angular
-  .module('project.desktop', [
+var ngModule = angular
+  .module('da.desktop', [
     'ui.router',
-    // features
+    'ngAnimate',
+    require('./services')(angular).name
   ])
+  .constant('$', require('jquery'))
   .constant('d3', require('d3'))
-  .constant('_', require('lodash'));
+  .constant('_', require('lodash'))
+  .config($urlRouterProvider => {
+    $urlRouterProvider.otherwise('/main');
+  });
