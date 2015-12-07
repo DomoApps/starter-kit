@@ -56,4 +56,6 @@ module.exports = ngModule => {
   if (ON_TEST) {
     require('./daEvents.spec.js')(ngModule);
   }
+
+  return ngModule;
 };

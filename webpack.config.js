@@ -22,6 +22,8 @@ var reporter = require('postcss-reporter');
 var cssnano = require('cssnano');
 var messages = require('postcss-browser-reporter');
 
+var cdnjs = require('cdnjs');
+
 // for the commonChunksPlugin, items get added to this array based on conigs
 var commonChunks = ['common'];
 var ON_TEST = process.env.NODE_ENV === 'test';
@@ -116,7 +118,7 @@ var config = {
     preLoaders: [
       {
         test: /\.js$/,
-        loader: 'eslint-loader', 
+        loader: 'eslint-loader',
         exclude: /(node_modules|bower_components)/,
       }
     ],
