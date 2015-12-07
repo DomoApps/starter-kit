@@ -110,3 +110,4 @@ In the `package.json`'s cdnjs property, you'll find a list of which dependencies
 ## Future Plans
 - [x] configurable proxy
 - [ ] localization strategy
+- [ ] closure optimization as soon as it's ready for babel 6
