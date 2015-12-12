@@ -11,5 +11,5 @@ angular
   .constant('d3', require('d3'))
   .constant('_', require('lodash'))
   .config($urlRouterProvider => {
-    $urlRouterProvider.otherwise('/main');
+    $urlRouterProvider.otherwise('/');
   });

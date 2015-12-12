@@ -2,7 +2,14 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{%= o.htmlWebpackPlugin.options.title %}</title>
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
   {% for (var dep in o.htmlWebpackPlugin.options.pkg.cdnjs.desktop) { %}
   <script src="{%=o.htmlWebpackPlugin.options.pkg.cdnjs.desktop[dep]%}" charset="utf-8"></script>
   {% } %}
@@ -10,7 +17,7 @@
 <body ng-cloak ng-app="da.desktop">
   <div id="appContainer">
     <h1>Desktop</h1>
-    <div ui-view="main"></div>
+    <div ui-view></div>
   </div>
   {% if (o.htmlWebpackPlugin.options.dev) { %}<script src="/webpack-dev-server.js"></script>{% } %}
   <!-- {%= o.htmlWebpackPlugin.options.pkg.name + ' v' + o.htmlWebpackPlugin.options.pkg.version + ' built on ' + new Date() %} -->

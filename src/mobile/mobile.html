@@ -11,7 +11,7 @@
 <body ng-cloak ng-app="da.mobile">
   <div id="appContainer">
     <h1>Mobile</h1>
-    <div ui-view="main"></div>
+    <div ui-view></div>
   </div>
   {% if (o.htmlWebpackPlugin.options.dev) { %}<script src="/webpack-dev-server.js"></script>{% } %}
   <!-- {%= o.htmlWebpackPlugin.options.pkg.name + ' v' + o.htmlWebpackPlugin.options.pkg.version + ' built on ' + new Date() %} -->
