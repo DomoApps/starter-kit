@@ -36,7 +36,8 @@
     "coveralls": "^2.11.4",
     "css-loader": "^0.23.0",
     "cssnano": "^3.3.2",
-    "da-plop": "ssh://git@git.empdev.domo.com:AppTeam6/da-plop.git",
+    "cz-conventional-changelog": "^1.1.5",
+    "da-plop": "git+ssh://git@git.empdev.domo.com:AppTeam6/da-plop.git",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.0.0",
     "eslint-friendly-formatter": "^1.2.2",
@@ -100,6 +101,11 @@
       "angular": "//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js",
       "angular-animate": "//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.min.js",
       "angular-ui-router": "//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }

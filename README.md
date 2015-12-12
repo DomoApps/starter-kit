@@ -1,6 +1,8 @@
 ![DomoApps Starter](https://domoapps.s3.amazonaws.com/cdn/images/DomoAppsLogo.png)
 
 # da-webpack
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 ## Getting Started
 1. clone this repo
     `$ git clone git@git.empdev.domo.com:AppTeam6/da-webpack.git {APP_NAME}`
