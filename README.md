@@ -40,7 +40,7 @@ $ git pull generator master
 You may have to resolve some merge conflicts but for the most part, this should be pretty painless.
 
 ### Updating CDN'd dependencies
-If you would like to add/edit/remove a dependency from a CDN, you'll need to add/edit/remove the script tag in your main HTML file, you'll also have to add/edit/remove it to the `webpack.config.js`'s `externals` property and to the `karma.conf.js`'s array variable called CDNS. 
+If you would like to add/edit/remove a dependency from a CDN, you'll need to add/edit/remove the script tag in your main HTML file, you'll also have to add/edit/remove it to the `webpack.config.js`'s `externals` property and to the `karma.conf.js`'s array variable called CDNS.
 
 ## Technology
 - [webpack](http://webpack.github.io/)
@@ -83,18 +83,20 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 |    |    └── ...
 |    |
 |    ├── desktop // a folder for each component
-|    |    ├── feature // route or view folder
-|    |    |    ├── feature.ctrl.js // controller
-|    |    |    ├── feature.template.html // view template
-|    |    |    └── index.js // define module and route
+|    |    ├── views // place for views (routes)
+|    |    |    ├── feature // route or view folder
+|    |    |    |    ├── feature.ctrl.js // controller
+|    |    |    |    ├── feature.template.html // view template
+|    |    |    |    └── index.js // define module and route
+|    |    |    └── ...
 |    |    |
 |    |    ├── services // common services for just desktop view
 |    |    |    ├── daData.factory.js // define service
 |    |    |    └── index.js // module containing all services
 |    |    |
-|    |    ├── desktop.html // html entry
+|    |    ├── desktop.html // html entry (layout html goes here)
 |    |    ├── desktop.css // common css for desktop
-|    |    └── index.js // main entry point
+|    |    └── index.js // JS entry
 |    |
 |    └── mobile // same structure as desktop
 |
