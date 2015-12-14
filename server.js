@@ -1,24 +1,27 @@
+/* eslint no-console: 0 */
 // webpack
-var WebpackDevServer = require('webpack-dev-server');
-var webpack = require('webpack');
-var webpackConfig = require('./webpack.config');
-    webpackConfig.output.path = '/';
-var compiler = webpack(webpackConfig);
+const WebpackDevServer = require('webpack-dev-server');
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config');
+webpackConfig.output.path = '/';
+
+const compiler = webpack(webpackConfig);
 
 // proxy
-var path = require('path');
-var fs = require('fs-extra');
-var glob = require('glob');
-var request = require('request');
-var Domo = require('ryuu-client');
-var portfinder = require('portfinder');
-    portfinder.basePort = 3000;
-var home = Domo.getHomeDir();
-var mostRecent = getMostRecentLogin();
-var domainPromise = getDomoappsDomain();
+const path = require('path');
+const fs = require('fs-extra');
+const glob = require('glob');
+const request = require('request');
+const Domo = require('ryuu-client');
+const portfinder = require('portfinder');
+portfinder.basePort = 3000;
+
+const home = Domo.getHomeDir();
+const mostRecent = getMostRecentLogin();
+const domainPromise = getDomoappsDomain();
 
 // webpack-dev-server
-var server = new WebpackDevServer(compiler, {
+const server = new WebpackDevServer(compiler, {
   contentBase: 'dist/',
   hot: false,
   noInfo: true, // set to false if you want to see build info
@@ -27,27 +30,27 @@ var server = new WebpackDevServer(compiler, {
 
 // domo data service proxy
 server.app.get('/data/v1/:query', (req, res) => {
-  var manifest = fs.readJsonSync(path.resolve(process.cwd() + '/manifest.json'));
-  var baseUrl;
+  const manifest = fs.readJsonSync(path.resolve(process.cwd() + '/manifest.json'));
+  let baseUrl;
   domainPromise
     .then(_baseUrl => baseUrl = _baseUrl)
     .then(() => createContext(manifest.id, manifest.mapping))
     .then(context => {
-      var j = request.jar();
-      var url = baseUrl + req.url;
-      var auth = `DA-SID-${getCustomer()}="${mostRecent.sid}"`;
-      var cookie = request.cookie(auth);
+      const j = request.jar();
+      const url = baseUrl + req.url;
+      const auth = `DA-SID-${getCustomer()}="${mostRecent.sid}"`;
+      const cookie = request.cookie(auth);
       j.setCookie(cookie, baseUrl);
 
-      var referer = req.headers.referer.indexOf('?') >= 0 
+      const referer = req.headers.referer.indexOf('?') >= 0
         ? `${req.headers.referer}&context=${context.id}` // jshint ignore:line
         : `${req.headers.referer}?userId=27&customer=dev&locale=en-US&platform=desktop&context=${context.id}`; // jshint ignore:line
 
       request({
-        url: url, 
-        jar: j, 
+        url: url,
+        jar: j,
         headers: {
-          referer: referer, 
+          referer: referer,
           accept: req.headers.accept
         }
       }).pipe(res);
@@ -70,80 +73,77 @@ checkSession().then(() => {
 });
 
 // helpers
-function getMostRecentLogin () {
-  var logins = glob.sync(`${home}/login/*.json`);
+function getMostRecentLogin() {
+  const logins = glob.sync(`${home}/login/*.json`);
   if (logins.length === 0) {
-    return;
+    return null;
   }
 
-  var mostRecent = logins.reduce((prev, next) => {
+  const mostRecentLogin = logins.reduce((prev, next) => {
     return fs.statSync(prev).mtime > fs.statSync(next).mtime ? prev : next;
   });
-  return fs.readJsonSync(mostRecent);
+  return fs.readJsonSync(mostRecentLogin);
 }
 
-function getCustomer () {
-  var regexp = /([\w]+)[\.|-]/;
+function getCustomer() {
+  const regexp = /([\w]+)[\.|-]/;
   return mostRecent.instance.match(regexp)[1];
 }
 
-function getEnv () {
-  var regexp = /([-_\w]+)\.(.*)/;
+function getEnv() {
+  const regexp = /([-_\w]+)\.(.*)/;
   return mostRecent.instance.match(regexp)[2];
 }
 
-function getDomoappsDomain () {
-  var uuid = Domo.createUUID();
-  var j = request.jar();
-  var auth = `SID="${mostRecent.sid}"`;
-  var cookie = request.cookie(auth);
+function getDomoappsDomain() {
+  const uuid = Domo.createUUID();
+  const j = request.jar();
+  const auth = `SID="${mostRecent.sid}"`;
+  const cookie = request.cookie(auth);
   j.setCookie(cookie, `https://${mostRecent.instance}`);
   return new Promise((resolve) => {
-    request({url: `https://${mostRecent.instance}/api/content/v1/mobile/environment`, jar: j}, (err, res) => {
-      if (res.statusCode === 200){
+    request({ url: `https://${mostRecent.instance}/api/content/v1/mobile/environment`, jar: j }, (err, res) => {
+      if (res.statusCode === 200) {
         resolve(`https://${uuid}.${JSON.parse(res.body).domoappsDomain}`);
-      }
-      else {
+      } else {
         resolve(`https://${uuid}.domoapps.${getEnv()}`);
       }
     });
   });
 }
 
-function createContext (designId, mapping) {
+function createContext(designId, mapping) {
   return new Promise(resolve => {
-    var options = {
+    const options = {
       url: `https://${mostRecent.instance}/domoapps/apps/v2/contexts`,
       method: 'POST',
-      json: {designId: designId, mapping: mapping},
+      json: { designId: designId, mapping: mapping },
       headers: { 'X-Domo-Authentication': mostRecent.sid }
     };
-    
+
     request(options, (err, res) => {
-      resolve(res.body[0] ? res.body[0] : {id: 0});
+      resolve(res.body[0] ? res.body[0] : { id: 0 });
     });
   });
 }
 
-function checkSession () {
+function checkSession() {
   return new Promise((resolve, reject) => {
-    var options = {
+    const options = {
       url: `https://${mostRecent.instance}/auth/validate`,
       method: 'GET',
       headers: { 'X-Domo-Authentication': mostRecent.sid }
     };
-    
+
     request(options, (err, res) => {
-      try{
-        var isValid = JSON.parse(res.body).isValid;
-        if(isValid){
+      try {
+        const isValid = JSON.parse(res.body).isValid;
+        if (isValid) {
           resolve(true);
-        }
-        else {
+        } else {
           reject(false);
         }
-      }
-      catch(e){
+      } catch (e) {
         // couldn't parse as JSON which means the service doesn't exist yet.
         // TODO: remove this once the /domoweb/auth/validate service has shipped to prod
         resolve(true);

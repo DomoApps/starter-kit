@@ -1,27 +1,35 @@
-var path = require('path');
-var url =  require('url');
-var webpack = require('webpack');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const path = require('path');
 
 // load webpack config here for for webpack preprocessor
-var webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.config');
 delete webpackConfig.devtool;
 webpackConfig.cache = true;
 
-var file;
-var cdns = getCDNDeps();
-var entry = [
+let file;
+// Add new cdns resouces here.
+const cdns = [
+  '//cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js',
+  '//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js',
+  '//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js',
+  '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js',
+  '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.min.js',
+  '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js',
+];
+
+const entry = [
   ...cdns,
   'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-mocks.js',
 ];
-var preprocessors = {};
-for (var chunk in webpackConfig.entry) {
-  file = path.resolve(webpackConfig.context, webpackConfig.entry[chunk]);
-  entry.push(file);
-  preprocessors[file] = ['webpack'];
+const preprocessors = {};
+for (const chunk in webpackConfig.entry) {
+  if ({}.hasOwnProperty.call(webpackConfig.entry, chunk)) {
+    file = path.resolve(webpackConfig.context, webpackConfig.entry[chunk]);
+    entry.push(file);
+    preprocessors[file] = ['webpack'];
+  }
 }
 
-module.exports = function (config) {
+module.exports = (config) => {
   config.set({
     basePath: './',
     frameworks: ['mocha', 'chai', 'sinon'],
@@ -55,20 +63,3 @@ module.exports = function (config) {
     ]
   });
 };
-
-
-function getCDNDeps() {
-  var uri;
-  var list = new Set();
-  var pkg = require('./package.json');
-  for (var platform in pkg.cdnjs) {
-    for (var dep in pkg.cdnjs[platform]) {
-      uri = url.parse(pkg.cdnjs[platform][dep]);
-      if (!uri.protocol) {
-        uri.protocol = 'https';
-      }
-      list.add(url.format(uri));
-    }
-  }
-  return list.values();
-}

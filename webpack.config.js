@@ -2,33 +2,32 @@
  * BUILD CONFIGS -  SET THESE BASED ON VIEWS YOU PLAN TO USE.
  * These configs can be changed at anytime.
  */
-var INCLUDE_DESKTOP_VIEW = true;
-var INCLUDE_MOBILE_VIEW = true;
+const INCLUDE_DESKTOP_VIEW = true;
+const INCLUDE_MOBILE_VIEW = true;
 
-/**************************************************************
+/*
+ * ***********************************************************
  * WARNING: DO NOT EDIT FILE BELOW THIS POINT!
- *************************************************************/
+ * ***********************************************************
+ */
 // dependencies
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NgAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 // postcss plugins
-var precss = require('precss');
-var postcssImport = require('postcss-import');
-var postcssImport = require('postcss-import');
-var reporter = require('postcss-reporter');
-var cssnano = require('cssnano');
-var messages = require('postcss-browser-reporter');
-
-var cdnjs = require('cdnjs');
+const precss = require('precss');
+const postcssImport = require('postcss-import');
+const reporter = require('postcss-reporter');
+const cssnano = require('cssnano');
+const messages = require('postcss-browser-reporter');
 
 // for the commonChunksPlugin, items get added to this array based on conigs
-var commonChunks = ['common'];
-var ON_TEST = process.env.NODE_ENV === 'test';
+const commonChunks = ['common'];
+const ON_TEST = process.env.NODE_ENV === 'test';
 
-var config = {
+const config = {
   cache: false,
   context: __dirname + '/src',
 
@@ -102,7 +101,7 @@ var config = {
       minChunks: 3,
       chunks: commonChunks,
     }),
-    new ngAnnotatePlugin({
+    new NgAnnotatePlugin({
       add: true,
       remove: false
     }),
@@ -134,7 +133,7 @@ var config = {
         }
       },
       {
-        test:   /\.css$/,
+        test: /\.css$/,
         loader: 'style!css!postcss',
         exclude: /(node_modules|bower_components)/
       },
@@ -154,15 +153,15 @@ var config = {
   },
 
   // postcss plugins settings
-  postcss: function (_webpack) {
-    var postcssPlugins = [
+  postcss: function postcss(_webpack) {
+    const postcssPlugins = [
       postcssImport({
         addDependencyTo: _webpack,
-        onImport: function (files) {
+        onImport: function onImport(files) {
           files.forEach(this.addDependency);
         }.bind(this)
       }),
-      precss({browsers: 'last 2 versions'}),
+      precss({ browsers: 'last 2 versions' }),
       reporter()
     ];
     // only minify when on production
@@ -199,7 +198,7 @@ var config = {
  * If on production then minify code else (on dev) and turn on hot module replacement.
  */
 if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}));
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }));
 } else {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
@@ -208,7 +207,7 @@ if (process.env.NODE_ENV === 'production') {
 /**
  * Logic to change build based on configs at top of file.
  */
-var INCLUDE_MULTIPLE_VIEWS = INCLUDE_DESKTOP_VIEW && INCLUDE_MOBILE_VIEW;
+const INCLUDE_MULTIPLE_VIEWS = INCLUDE_DESKTOP_VIEW && INCLUDE_MOBILE_VIEW;
 if (!INCLUDE_DESKTOP_VIEW && !INCLUDE_MOBILE_VIEW) {
   throw new Error('You must include at least one view!');
 }
