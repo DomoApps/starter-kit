@@ -1,5 +1,5 @@
-<a name="0.0.3"></a>
-## [0.0.3](/https://git.empdev.domo.com/AppTeam6/da-webpack/compare/v0.0.3...v0.0.3) (2015-12-14)
+<a name="0.0.4"></a>
+## [0.0.4](/https://git.empdev.domo.com/AppTeam6/da-webpack/compare/v0.0.3...v0.0.4) (2015-12-14)
 
 
 ### Bug Fixes

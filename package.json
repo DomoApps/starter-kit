@@ -1,6 +1,6 @@
 {
   "name": "da-starter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "generatorVersion": "0.0.9",
   "description": "A starter for writing Domo Apps in ES6",
   "scripts": {
