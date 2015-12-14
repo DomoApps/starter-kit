@@ -40,7 +40,7 @@ $ git pull generator master
 You may have to resolve some merge conflicts but for the most part, this should be pretty painless.
 
 ### Updating CDN'd dependencies
-In the `package.json`'s cdnjs property, you'll find a list of which dependencies will be loaded via a CDN and what url to pull from. You are free to update these urls to point to the appropriate dependency versions for your app. You are also free to add new dependencies to this list but be aware that you'll have to also modify the webpack config's `externals` setting to tell webpack not to bundle that dependency and rather rely on the CDN.
+If you would like to add/edit/remove a dependency from a CDN, you'll need to add/edit/remove the script tag in your main HTML file, you'll also have to add/edit/remove it to the `webpack.config.js`'s `externals` property and to the `karma.conf.js`'s array variable called CDNS. 
 
 ## Technology
 - [webpack](http://webpack.github.io/)
