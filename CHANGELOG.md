@@ -1,5 +1,5 @@
 <a name="0.0.3"></a>
-## [0.0.3](/https://git.empdev.domo.com/AppTeam6/da-webpack/compare/v0.0.3...v0.0.3) (2015-12-07)
+## [0.0.3](/https://git.empdev.domo.com/AppTeam6/da-webpack/compare/v0.0.3...v0.0.3) (2015-12-12)
 
 
 ### Bug Fixes
@@ -9,6 +9,7 @@
 ### Features
 
 * **cdnjs:** add cdnjs to package.json ([238eae6](https://git.empdev.domo.com/AppTeam6/da-webpack/commits/238eae6))
+* **plop:** adding plopfile to root directory ([dfa4473](https://git.empdev.domo.com/AppTeam6/da-webpack/commits/dfa4473))
 * **ternjs:** add turnjs config to build for autocomplete in code. ([cdcfd61](https://git.empdev.domo.com/AppTeam6/da-webpack/commits/cdcfd61))
 
 

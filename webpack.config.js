@@ -130,7 +130,7 @@ var config = {
         query: {
           cacheDirectory: true,
           presets: ['es2015-loose', 'stage-1'],
-          plugins: ['transform-runtime']
+          plugins: ['transform-runtime', 'add-module-exports']
         }
       },
       {
