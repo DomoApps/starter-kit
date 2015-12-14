@@ -6,7 +6,7 @@ angular
     'ui.router',
     'ngAnimate',
     require('./services')(angular).name,
-    require('./main')(angular).name,
+    require('./views')(angular).name,
   ])
   .constant('$', require('jquery'))
   .constant('d3', require('d3'))
