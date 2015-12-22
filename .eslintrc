@@ -8,7 +8,8 @@
   },
   "rules": {
     "comma-dangle": [0, "always-multiline"],
-    "no-use-before-define": [2, "nofunc"]
+    "no-use-before-define": [2, "nofunc"],
+    "spaced-comment": [0, "never"]
   },
   "globals": {
     "ON_DEV": false,
