@@ -140,7 +140,7 @@ const config = {
       },
       {
         test: /\.(png|jpeg|gif).*$/,
-        loader: 'url'
+        loader: 'file?name=/[name].[ext]?[hash]'
       },
       {
         test: /\.html$/,
@@ -148,7 +148,7 @@ const config = {
       },
       {
         test: /\.(woff|ttf|eot|svg).*$/,
-        loader: 'file?name=[name].[ext]?[hash]'
+        loader: 'file?name=/[name].[ext]?[hash]'
       }
     ]
   },
