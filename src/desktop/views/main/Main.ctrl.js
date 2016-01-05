@@ -9,3 +9,5 @@ MainCtrl.$inject = [];
 if (ON_TEST) {
   require('./Main.ctrl.spec.js')(MainCtrl);
 }
+
+module.exports = MainCtrl;
