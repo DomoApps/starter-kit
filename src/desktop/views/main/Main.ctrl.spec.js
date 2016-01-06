@@ -15,7 +15,7 @@ module.exports = Ctrl => {
     describe('$scope', () => {
       it('sets the strength to "strong" if the password length is >8 chars', () => {
         const $scope = {};
-        const controller = $controller('Test', { $scope: $scope });
+        const controller = $controller('Test', { $scope });
         expect(controller).to.not.equal(undefined);
       });
     });
