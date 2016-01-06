@@ -34,6 +34,7 @@
     "cdnjs": "^0.3.2",
     "chai": "^3.4.1",
     "chalk": "^1.1.1",
+    "conventional-changelog": "^0.5.3",
     "coveralls": "^2.11.6",
     "css-loader": "^0.23.0",
     "cssnano": "^3.4.0",
