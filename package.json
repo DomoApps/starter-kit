@@ -20,6 +20,7 @@
   "repository": "https://git.empdev.domo.com/AppTeam6/da-webpack",
   "license": "MIT",
   "devDependencies": {
+    "@domoinc/da-plop": "^1.0.1",
     "autoprefixer": "^6.1.2",
     "babel": "^6.3.13",
     "babel-core": "^6.3.17",
@@ -39,7 +40,6 @@
     "css-loader": "^0.23.0",
     "cssnano": "^3.4.0",
     "cz-conventional-changelog": "^1.1.5",
-    "da-plop": "git+ssh://git@git.empdev.domo.com:AppTeam6/da-plop.git",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^2.0.0",
     "eslint-friendly-formatter": "^1.2.2",

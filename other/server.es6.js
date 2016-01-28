@@ -62,7 +62,7 @@ server.app.get('/data/v1/:query', (req, res) => {
 
 // start server
 checkSession().then(() => {
-  portfinder.getPort((err, port) => {
+  portfinder.getPort({ host: '0.0.0.0' }, (err, port) => {
     server.listen(port, '0.0.0.0', () => {
       console.log(`Listening on http://0.0.0.0:${port}/webpack-dev-server/index.html`);
     });
