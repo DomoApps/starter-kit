@@ -59,7 +59,7 @@ function setupPackage({ name, description, git }) {
 function setupGit({ name, description, git }) {
   shelljs.exec('git remote rename origin generator');
   shelljs.exec(`git remote add origin ${git}`);
-  shelljs.exec('git push origin master');
+  shelljs.exec('git push -u origin master');
 }
 
 
