@@ -15,7 +15,8 @@
     "preversion": "npm run eslint && npm test",
     "version": "npm run build && npm run changelog && git add -A CHANGELOG.md",
     "postversion": "git push && git push --tags",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
+    "upload": "npm run build && cd dist/ && domo publish && cd .."
   },
   "author": "AppTeam6 <Squad.AppTeam6@domo.com>",
   "repository": "https://git.empdev.domo.com/AppTeam6/da-webpack",

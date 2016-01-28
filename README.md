@@ -6,19 +6,28 @@
 ## Getting Started
 1. clone this repo
     `$ git clone git@git.empdev.domo.com:AppTeam6/da-webpack.git {APP_NAME}`
-2. rename the remote `$ git remote rename origin generator`
-3. create new repo and create new origin remote that points to that repo.
-    `$ git remote add origin {remote_path}`
-4. Change "name" property in package.json to app name.
-5. push code to new repo `$ git push origin master`
+2. install dependencies `$ npm i --progress=false`
+3. create new (empty) repo on github and copy it's SSH link
+4. run setup command `$ npm run setup` and follow prompts
+5. configure `manifest.json` file
+6. upload to domo `$ npm run upload`
+
+### What does the setup task do?
+1. Configures `package.json` { name, version, decription, repository } props.
+2. renames git remote to this repo from 'origin' to generator.
+3. creates new 'origin' remote to newly created repo
+4. adds and commit's all new files
+5. pushes changes to remote.
 
 ## Usage
+- `$ npm setup` to setup your repo to new git remote
 - `$ npm start` to run webpack-dev-server
 - `$ npm test` to run unit tests
 - `$ npm tdd` to continuously run tests
 - `$ npm run eslint` to lint code
 - `$ npm run build` to build (and minify)
 - `$ npm version (patch|minor|major)` to create git release
+- `$ npm run upload` to upload new version to domo. aka `domo publish`
 
 ## Adding or removing platform views (mobile, desktop)
 - Change config values at top of `webpack.config.js`
