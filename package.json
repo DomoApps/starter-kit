@@ -1,7 +1,6 @@
 {
   "name": "da-starter",
   "version": "0.0.4",
-  "da-webpack": "0.0.4",
   "description": "A starter for writing Domo Apps in ES6",
   "scripts": {
     "setup": "node other/setup.js",
@@ -19,7 +18,7 @@
     "upload": "npm run build && cd dist/ && domo publish && cd .."
   },
   "author": "AppTeam6 <Squad.AppTeam6@domo.com>",
-  "repository": "https://git.empdev.domo.com/AppTeam6/da-webpack",
+  "repository": "https://github.com/DomoApps/da-webpack",
   "license": "MIT",
   "devDependencies": {
     "@domoinc/da-plop": "^1.0.1",

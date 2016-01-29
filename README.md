@@ -1,11 +1,11 @@
 ![DomoApps Starter](https://domoapps.s3.amazonaws.com/cdn/images/DomoAppsLogo.png)
 
-# da-webpack
+# da-webpack (Domo Apps starter kit)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Getting Started
 1. clone this repo
-    `$ git clone git@git.empdev.domo.com:AppTeam6/da-webpack.git {APP_NAME}`
+    `$ git clone git@github.com:DomoApps/da-webpack.git {APP_NAME}`
 2. install dependencies `$ npm i --progress=false`
 3. create new (empty) repo on github and copy it's SSH link
 4. run setup command `$ npm run setup` and follow prompts
@@ -66,14 +66,13 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
   + [eslint]() - For JavaScript
 - Dev Server with auto-reload
   + [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)
+  + Proxy for data service
 - Changelog Generation
   + [conventional-changelog](https://github.com/ajoslin/conventional-changelog)
 - Minification
   + [UglifyJS2](https://github.com/mishoo/UglifyJS2)
 - Git Release Automation
 - [.editorconfig](http://editorconfig.org/)
-- Single OUTPUT file (works well for NPM)
-  + [webpack-style-loader](https://github.com/webpack/style-loader)
 
 ## Domo App Specific Features
 - Platform Detection / Routing
