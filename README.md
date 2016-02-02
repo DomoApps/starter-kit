@@ -123,3 +123,13 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 - [x] configurable proxy
 - [ ] localization strategy
 - [ ] closure optimization as soon as it's ready for babel 6
+
+
+
+---
+
+
+# Domo Widgets (visualization components)
+Domo has a growing library of visualization components (we call them widgets) that we have developed over time and incorporated into the apps that we have created. These widgets are built on top of a charting library called [d3.js](http://d3js.org/) and a framework on top of d3.js called [d3.chart](http://misoproject.com/d3-chart/). In order to consume these widgets, you don't *need* to be very familiar with these libraries and frameworks although a familiarity would be helpful. 
+
+These widgets are available to download as dependencies to your project via [NPM](https://www.npmjs.com/) and they are all name-spaced to the [@domoinc](https://www.npmjs.com/org/domoinc) organization. They are bundled as [UMD](https://github.com/umdjs/umd) modules so they should be consumable by most JavaScript bundlers and module systems (eg. RequireJS, Webpack, Browserify, Rollup). To see a list of all of our available widgets, simply navigate your browser to [https://www.npmjs.com/org/domoinc](https://www.npmjs.com/org/domoinc).
