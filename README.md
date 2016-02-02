@@ -1,12 +1,12 @@
-![DomoApps Starter](https://domoapps.s3.amazonaws.com/cdn/images/DomoAppsLogo.png)
+![Domo Apps Starter Kit](https://domoapps.s3.amazonaws.com/cdn/images/DomoAppsLogo.png)
 
-# da-webpack (Domo Apps starter kit)
+# Domo Apps Starter Kit
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Getting Started
 1. clone this repo
-    `$ git clone git@github.com:DomoApps/da-webpack.git {APP_NAME}`
-2. install dependencies `$ npm i --progress=false`
+    `$ git clone git@github.com:DomoApps/starter-kit.git {APP_NAME}`
+2. install dependencies `$ npm install`
 3. create new (empty) repo on github and copy it's SSH link
 4. run setup command `$ npm run setup` and follow prompts
 5. configure `manifest.json` file
@@ -124,12 +124,10 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 - [ ] localization strategy
 - [ ] closure optimization as soon as it's ready for babel 6
 
-
-
 ---
 
-
 # Domo Widgets (visualization components)
+
 Domo has a growing library of visualization components (we call them widgets) that we have developed over time and incorporated into the apps that we have created. These widgets are built on top of a charting library called [d3.js](http://d3js.org/) and a framework on top of d3.js called [d3.chart](http://misoproject.com/d3-chart/). In order to consume these widgets, you don't *need* to be very familiar with these libraries and frameworks although a familiarity would be helpful. 
 
 These widgets are available to download as dependencies to your project via [NPM](https://www.npmjs.com/) and they are all name-spaced to the [@domoinc](https://www.npmjs.com/org/domoinc) organization. They are bundled as [UMD](https://github.com/umdjs/umd) modules so they should be consumable by most JavaScript bundlers and module systems (eg. RequireJS, Webpack, Browserify, Rollup). To see a list of all of our available widgets, simply navigate your browser to [https://www.npmjs.com/org/domoinc](https://www.npmjs.com/org/domoinc).
@@ -140,31 +138,30 @@ These widgets are available to download as dependencies to your project via [NPM
 3. Create instance of chart by passing the constructor a d3 selection.
 4. Set chart's configurable options via `config` method.
 5. Set chart's accessor functions via `accessor` method.
-5. Draw chart by passing data to chart method.
-
+6. Draw chart by passing data to chart method.
    
- ```js
-   // CommonJS (webpack, browserify)
-   const d3 = require('d3');
-   const BarChart = require('@domoinc/bar-chart');
-   const chart = new BarChart(d3.select('#chart'))
-     .accessor('value', 'value', d => d.value)
-     .config('width', 500)
-     .draw(data);
-   
-   // AMD (RequireJS)
-   define(['d3', 'bar-chart'], function(d3, BarChart) {
-     var chart = new BarChart(d3.select('#chart'));
-     chart
-       .accessor('value', function(d) { return d.value; })
-      .config('width', 500)
-      .draw(data);
-   });
-   
-   // globals (via script tag)
-   var chart = new BarChart(d3.select('#chart'));
+```js
+ // CommonJS (webpack, browserify)
+ const d3 = require('d3');
+ const BarChart = require('@domoinc/bar-chart');
+ const chart = new BarChart(d3.select('#chart'))
+   .accessor('value', 'value', d => d.value)
+   .config('width', 500)
+   .draw(data);
+ 
+ // AMD (RequireJS)
+ define(['d3', 'bar-chart'], function(d3, BarChart) {
+ var chart = new BarChart(d3.select('#chart'));
    chart
-     .accessor('value', function(d) { return d.value; });
-     .config('width', 500)
-     .draw(data);
- ```
+    .accessor('value', function(d) { return d.value; })
+    .config('width', 500)
+    .draw(data);
+ });
+ 
+ // globals (via script tag)
+ var chart = new BarChart(d3.select('#chart'));
+ chart
+   .accessor('value', function(d) { return d.value; });
+   .config('width', 500)
+   .draw(data);
+```
