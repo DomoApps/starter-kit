@@ -1,1 +1,1 @@
-module.exports = require('da-plop');
+module.exports = require('@domoinc/da-plop');
