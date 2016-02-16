@@ -75,6 +75,7 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 - [.editorconfig](http://editorconfig.org/)
 - Plop
   + $ plop [type e.g. directive, factory, filter, route]
+  + [da-plop](https://git.empdev.domo.com/AppTeam6/da-plop)
 
 ## Domo App Specific Features
 - Platform Detection / Routing
