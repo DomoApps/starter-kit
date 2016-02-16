@@ -73,6 +73,8 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
   + [UglifyJS2](https://github.com/mishoo/UglifyJS2)
 - Git Release Automation
 - [.editorconfig](http://editorconfig.org/)
+- Plop
+  + $ plop [type e.g. directive, factory, filter, route]
 
 ## Domo App Specific Features
 - Platform Detection / Routing
