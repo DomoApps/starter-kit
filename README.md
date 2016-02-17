@@ -23,7 +23,7 @@
 - `$ npm setup` to setup your repo to new git remote
 - `$ npm start` to run webpack-dev-server
 - `$ npm test` to run unit tests
-- `$ npm tdd` to continuously run tests
+- `$ npm run tdd` to continuously run tests
 - `$ npm run eslint` to lint code
 - `$ npm run build` to build (and minify)
 - `$ npm version (patch|minor|major)` to create git release
