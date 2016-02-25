@@ -22,6 +22,7 @@ const postcssImport = require('postcss-import');
 const reporter = require('postcss-reporter');
 const cssnano = require('cssnano');
 const messages = require('postcss-browser-reporter');
+const autoprefixer = require('autoprefixer');
 
 // for the commonChunksPlugin, items get added to this array based on conigs
 const commonChunks = ['common'];
@@ -162,7 +163,8 @@ const config = {
           files.forEach(this.addDependency);
         }.bind(this)
       }),
-      precss({ browsers: 'last 2 versions' }),
+      precss(),
+      autoprefixer({ browsers: ['last 2 versions'] }),
       reporter()
     ];
     // only minify when on production
