@@ -4,7 +4,10 @@ import inquirer from 'inquirer';
 import kebabCase from 'lodash.kebabcase';
 import shelljs from 'shelljs';
 
-const questions = [
+// TODO: update with the repo location on Github after we migrate
+const STARTER_REPO = 'https://github.com/DomoApps/starter-kit.git';
+
+const QUESTIONS = [
   {
     type: 'input',
     name: 'name',
@@ -22,18 +25,59 @@ const questions = [
   }
 ];
 
-inquirer.prompt(questions, answers => {
-  setupPackage({ name: kebabCase(answers.name), description: answers.description, git: answers.git })
-    .then(setupGit)
-    .then(() => {
-      console.log(chalk.green('Success!'));
-      console.log(chalk.white('Don\'t forget to setup your manifest.json and run `domo publish`'));
-    })
-    .catch((err) => {
-      console.log(chalk.red('There was an error!'));
-      console.error(err);
+const remotes = getRemotesAsMap();
+if (remotes.has('generator')) {
+  console.log(`Your repo is already setup to receive dev tool updates. Run ${chalk.bold('npm run update-tools')} for updates.`);
+} else if (hasChangedOriginRemote(remotes)) {
+  addGeneratorRemote();
+} else {
+  initializeProject();
+}
+
+function getRemotesAsMap() {
+  const remotes = new Map();
+
+  const remotesOutput = shelljs.exec('git remote -v', { silent: true }).output;
+  remotesOutput.trim()
+    .split('\n')
+    .filter(line => line.indexOf('(fetch)') !== -1)
+    .forEach(remoteLine => {
+      const [name, verboseLocation] = remoteLine.split('\t');
+      const location = verboseLocation.replace(' (fetch)', '');
+      remotes.set(name, location);
     });
-});
+
+  return remotes;
+}
+
+function hasChangedOriginRemote(remotes) {
+  return (remotes.has('origin') && remotes.get('origin').indexOf(STARTER_REPO) !== -1);
+}
+
+function addGeneratorRemote() {
+  const results = shelljs.exec(`git remote add generator ${STARTER_REPO}`);
+  if (results.code === 0) {
+    console.log(`${chalk.green('SUCCESS!')} The ${chalk.bold('generator')} remote has been setup. ` +
+                `Run ${chalk.bold('npm run update-tools')} for updates.`);
+  } else {
+    console.log(`${chalk.red('ERROR:')} ${results.output}`);
+  }
+}
+
+function initializeProject() {
+  inquirer.prompt(QUESTIONS, answers => {
+    setupPackage({ name: kebabCase(answers.name), description: answers.description, git: answers.git })
+      .then(setupGit)
+      .then(() => {
+        console.log(chalk.green('Success!'));
+        console.log(chalk.white('Don\'t forget to setup your manifest.json and run `domo publish`'));
+      })
+      .catch((err) => {
+        console.log(chalk.red('There was an error!'));
+        console.error(err);
+      });
+  });
+}
 
 function setupPackage({ name, description, git }) {
   return new Promise((resolve, reject) => {
