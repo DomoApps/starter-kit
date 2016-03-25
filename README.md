@@ -1,7 +1,8 @@
-![Domo Apps Starter Kit](https://domoapps.s3.amazonaws.com/cdn/images/DomoAppsLogo.png)
 
 # Domo Apps Starter Kit
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+![App Thumbnail](domo/thumbnail.png)
 
 ## Getting Started
 1. clone this repo
@@ -9,7 +10,7 @@
 2. install dependencies `$ npm install`
 3. create new (empty) repo on github and copy it's SSH link
 4. run setup command `$ npm run setup` and follow prompts
-5. configure `manifest.json` file
+5. configure `domo/manifest.json` file
 6. upload to domo `$ npm run upload`
 
 ### What does the setup task do?
