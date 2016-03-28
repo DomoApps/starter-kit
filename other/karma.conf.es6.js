@@ -1,7 +1,7 @@
 const path = require('path');
 
 // load webpack config here for for webpack preprocessor
-const webpackConfig = require('./webpack.config.es6');
+const webpackConfig = require('../webpack.config');
 delete webpackConfig.devtool;
 webpackConfig.cache = true;
 
