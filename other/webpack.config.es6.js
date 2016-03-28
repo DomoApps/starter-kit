@@ -59,41 +59,33 @@ const config = {
     libraryTarget: 'umd'
   },
 
-  // dependencies listed here will NOT be bunlded into the app, even if you `require` them.
-  externals: [
-    {
-      'angular': {
-        root: 'angular',
-        commonjs: 'angular',
-        commonjs2: 'angular',
-        amd: 'angular'
-      }
+  // dependencies listed here will NOT be bundled into the app, even if you `require` them.
+  externals: {
+    'angular': {
+      root: 'angular',
+      commonjs: 'angular',
+      commonjs2: 'angular',
+      amd: 'angular'
     },
-    {
-      'lodash': {
-        root: '_',
-        commonjs: 'lodash',
-        commonjs2: 'lodash',
-        amd: 'lodash'
-      }
+    'lodash': {
+      root: '_',
+      commonjs: 'lodash',
+      commonjs2: 'lodash',
+      amd: 'lodash'
     },
-    {
-      'jquery': {
-        root: '$',
-        commonjs: 'jquery',
-        commonjs2: 'jquery',
-        amd: 'jQuery'
-      }
+    'jquery': {
+      root: '$',
+      commonjs: 'jquery',
+      commonjs2: 'jquery',
+      amd: 'jQuery'
     },
-    {
-      'd3': {
-        root: 'd3',
-        commonjs: 'd3',
-        commonjs2: 'd3',
-        amd: 'd3'
-      }
+    'd3': {
+      root: 'd3',
+      commonjs: 'd3',
+      commonjs2: 'd3',
+      amd: 'd3'
     }
-  ],
+  },
 
   // optimization plugins
   // we add more items to this array based on configs set at top of file.
@@ -288,9 +280,13 @@ if (INCLUDE_MULTIPLE_VIEWS) {
 /**
  * Add any extra externals
  */
-if (configOptions.hasOwnProperty('externals') && configOptions.externals.length > 0) {
+if (configOptions.hasOwnProperty('externals')) {
   const addedExternals = configOptions.externals;
-  config.externals.push.apply(config.externals, addedExternals);
+  for (const key in addedExternals) {
+    if (addedExternals.hasOwnProperty(key)) {
+      config.externals[key] = addedExternals[key];
+    }
+  }
 }
 
 /**
