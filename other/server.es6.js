@@ -30,7 +30,7 @@ const server = new WebpackDevServer(compiler, {
 
 // domo data service proxy
 server.app.get('/data/v1/:query', (req, res) => {
-  const manifest = fs.readJsonSync(path.resolve(process.cwd() + '/manifest.json'));
+  const manifest = fs.readJsonSync(path.resolve(process.cwd() + '/domo/manifest.json'));
   let baseUrl;
   domainPromise
     .then(_baseUrl => baseUrl = _baseUrl)
