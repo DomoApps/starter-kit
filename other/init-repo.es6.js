@@ -55,11 +55,12 @@ function hasChangedOriginRemote(remotes) {
   const originRemote = remotes.get('origin');
 
   let hasChanged = true;
-  GENERATOR_KEYWORDS.forEach(keyword => {
+  for (const keyword of GENERATOR_KEYWORDS) {
     if (originRemote.indexOf(keyword) !== -1) {
       hasChanged = false;
+      break;
     }
-  });
+  }
 
   return hasChanged;
 }
