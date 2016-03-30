@@ -29,6 +29,7 @@
 - `$ npm run build` to build (and minify)
 - `$ npm version (patch|minor|major)` to create git release
 - `$ npm run upload` to upload new version to domo. aka `domo publish`
+- `$ npm run update-tools` to pull in improvements to the dev tools
 
 ## Adding or removing platform views (mobile, desktop)
 - Change config values at top of `webpack.config.js`
@@ -41,13 +42,13 @@ var INCLUDE_MOBILE_VIEW = true;
 ```
 
 ## Updates
-To update your build tools, we can use git to handle most of the hard work for us.
+To update your build tools, use the `update-tools` script:
 
 ```bash
-$ git pull generator master
+$ npm run update-tools
 ```
 
-You may have to resolve some merge conflicts but for the most part, this should be pretty painless.
+Under the hood, this script is running `git merge --no-commit generator/master`. Make sure to run a `git diff HEAD` to make sure you are not overriding any of your own code in the update. You may also have to resolve some merge conflicts.
 
 ### Updating CDN'd dependencies
 If you would like to add/edit/remove a dependency from a CDN, you'll need to add/edit/remove the script tag in your main HTML file, you'll also have to add/edit/remove it to the `webpack.config.js`'s `externals` property and to the `karma.conf.js`'s array variable called CDNS.
