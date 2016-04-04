@@ -5,6 +5,7 @@ angular
   .module('da.desktop', [
     'ui.router',
     'ngAnimate',
+    require('../common').name,
     require('./services')(angular).name,
     require('./views')(angular).name,
   ])

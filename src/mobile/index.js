@@ -5,6 +5,7 @@ angular
   .module('da.mobile', [
     'ui.router',
     'ngAnimate',
+    require('../common').name,
     // require('./feature')(angular).name,
   ])
   .constant('$', require('jquery'))
