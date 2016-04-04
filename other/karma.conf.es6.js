@@ -64,6 +64,7 @@ module.exports = (config) => {
       'karma-mocha',
       'karma-chai',
       'karma-sinon',
-    ]
+    ],
+    logLevel: config.LOG_ERROR
   });
 };
