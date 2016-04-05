@@ -4,6 +4,7 @@ const angular = require('angular');
 const ngDependencies = [
   'ui.router',
   'ngAnimate',
+  require('../common').name,
   // Add additional external Angular dependencies here
 ];
 
@@ -16,10 +17,11 @@ const ngModule = angular.module('da.desktop', ngDependencies)
   .constant('_', require('lodash'));
 
 requireAll(require.context('./components', true, /\.(component|directive)\.js$/))
-  .forEach(module => { module(ngModule); });
+  .forEach(module => module(ngModule));
 
 requireAll(require.context('./containers', true, /\.(component|directive)\.js$/))
-  .forEach(module => { module(ngModule); });
+  .forEach(module => module(ngModule));
+
 
 ngModule.config(require('./desktop.config.js'))
   .run(require('./desktop.init.js'));
