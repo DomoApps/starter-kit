@@ -1,5 +1,6 @@
 require('./mobile.css');
 
+import angular from 'angular';
 import { attachAll, injectAll } from '../../other/boilerplate-utils.js';
 
 const ngDependencies = [
@@ -12,7 +13,7 @@ const ngDependencies = [
 ngDependencies.push.apply(ngDependencies, injectAll(require.context('./routes', true, /\.route\.js$/)));
 
 
-const ngModule = require('angular').module('da.mobile', ngDependencies)
+const ngModule = angular.module('da.mobile', ngDependencies)
   .constant('$', require('jquery'))
   .constant('d3', require('d3'))
   .constant('_', require('lodash'));
