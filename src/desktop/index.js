@@ -3,12 +3,12 @@ const angular = require('angular');
 
 const ngDependencies = [
   'ui.router',
-  'ngAnimate'
+  'ngAnimate',
   // Add additional external Angular dependencies here
 ];
 
-requireAll(require.context('./routes/*', /index.js$/))
-  .forEach(route => ngDependencies.push(route(angularObj).name));
+requireAll(require.context('./routes', true, /\.route\.js$/))
+  .forEach(route => ngDependencies.push(route(angular).name));
 
 const ngModule = angular.module('da.desktop', ngDependencies)
   .constant('$', require('jquery'))
@@ -16,10 +16,10 @@ const ngModule = angular.module('da.desktop', ngDependencies)
   .constant('_', require('lodash'));
 
 requireAll(require.context('./components', true, /\.(component|directive)\.js$/))
-.map(module => { module(ngModule); });
+  .forEach(module => { module(ngModule); });
 
 requireAll(require.context('./containers', true, /\.(component|directive)\.js$/))
-  .map(module => { module(ngModule); });
+  .forEach(module => { module(ngModule); });
 
 ngModule.config(require('./desktop.config.js'))
   .run(require('./desktop.init.js'));
