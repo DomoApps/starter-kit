@@ -1,7 +1,7 @@
 require('./desktop.css');
 
 import angular from 'angular';
-import { attachAll, injectAll } from '../../other/boilerplate-utils.js';
+import { attachAll, getNgModuleNames } from '../../other/boilerplate-utils.js';
 
 const ngDependencies = [
   'ui.router',
@@ -10,7 +10,7 @@ const ngDependencies = [
   // Add additional external Angular dependencies here
 ];
 
-ngDependencies.push.apply(ngDependencies, injectAll(require.context('./routes', true, /\.route\.js$/)));
+ngDependencies.push.apply(ngDependencies, getNgModuleNames(require.context('./routes', true, /\.route\.js$/)));
 
 const ngModule = angular.module('da.desktop', ngDependencies)
   .constant('$', require('jquery'))
