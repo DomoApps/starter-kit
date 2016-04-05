@@ -10,7 +10,8 @@ const ngDependencies = [
   // Add additional external Angular dependencies here
 ];
 
-ngDependencies.push.apply(ngDependencies, getNgModuleNames(require.context('./routes', true, /\.route\.js$/)));
+ngDependencies.push.apply(ngDependencies, getNgModuleNames(require.context('./routes', true, /index\.js$/)));
+
 
 const ngModule = angular.module('da.desktop', ngDependencies)
   .constant('$', require('jquery'))
