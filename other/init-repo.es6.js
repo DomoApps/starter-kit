@@ -102,7 +102,7 @@ function setupPackage({ name, description, git }) {
       p.description = description;
       p.repository = git;
 
-      fs.writeFile(filePath, JSON.stringify(p, null, 4), (err, data) => {
+      fs.writeFile(filePath, JSON.stringify(p, null, 2), (err, data) => {
         if (err) reject(err);
 
         resolve({ name, description, git });

@@ -36,6 +36,10 @@ module.exports = (config) => {
     files: entry,
     webpack: webpackConfig,
 
+    webpackMiddleware: {
+      noInfo: true
+    },
+
     // list of files to exclude
     exclude: [
       'src/switcher.js'
@@ -45,7 +49,7 @@ module.exports = (config) => {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: preprocessors,
 
-    reporters: ['progress'],
+    reporters: ['dots'],
     port: 9876,
     colors: true,
     autoWatch: true,
@@ -60,6 +64,7 @@ module.exports = (config) => {
       'karma-mocha',
       'karma-chai',
       'karma-sinon',
-    ]
+    ],
+    logLevel: config.LOG_ERROR
   });
 };
