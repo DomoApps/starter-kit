@@ -1,6 +1,6 @@
 {
   "name": "start-kit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A starter for writing Domo Apps in ES6",
   "scripts": {
     "setup": "node other/setup.js",
