@@ -1,6 +1,6 @@
 {
   "name": "start-kit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A starter for writing Domo Apps in ES6",
   "scripts": {
     "setup": "node other/setup.js",
@@ -22,7 +22,7 @@
   "repository": "https://github.com/DomoApps/starter-kit",
   "license": "MIT",
   "devDependencies": {
-    "@domoinc/da-plop": "^1.0.1",
+    "@domoinc/da-plop": "^2.0.0",
     "autoprefixer": "^6.1.2",
     "babel": "^6.3.13",
     "babel-core": "^6.3.17",

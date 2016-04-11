@@ -88,25 +88,36 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 . // top level config stuff for webpack, karma, eslint, ect...
 ├── src
 |    ├── common // common across desktop and mobile
+|    |    ├── components // place for common components
+|    |    |
+|    |    ├── filters // place for common filters
+|    |    |
+|    |    ├── services // place for common services
+|    |    |
 |    |    ├── styles // place for common styles
 |    |    |    ├── typebase.css // base type for all apps
 |    |    |    └── variable.css // variables
-|    |    |
-|    |    ├── services // place for common services/filters
-|    |    └── ...
+|    |    └── index.js // JS entry for common Angular module
 |    |
 |    ├── desktop // a folder for each component
-|    |    ├── views // place for views (routes)
-|    |    |    ├── feature // route or view folder
-|    |    |    |    ├── feature.ctrl.js // controller
-|    |    |    |    ├── feature.template.html // view template
-|    |    |    |    └── index.js // define module and route
-|    |    |    └── ...
+|    |    ├── components // place for dumb/presenter components common across routes
 |    |    |
-|    |    ├── services // common services for just desktop view
-|    |    |    ├── daData.factory.js // define service
-|    |    |    └── index.js // module containing all services
+|    |    ├── containers // place for smart/container components common across routes
 |    |    |
+|    |    ├── routes // place for routes
+|    |    |    └── my-route
+|    |    |        ├── components // place for dumb/presenter components specific to this route
+|    |    |        |
+|    |    |        ├── containers // place for smart/container components specific to this route
+|    |    |        |    └── my-container
+|    |    |        |        ├── my-container.component.js
+|    |    |        |        ├── my-container.component.css
+|    |    |        |        └── my-container.component.html
+|    |    |        |
+|    |    |        └── index.js // define module and route
+|    |    |
+|    |    ├── desktop.cofig.js // desktop app top level configuration
+|    |    ├── desktop.init.js // top level initialization code
 |    |    ├── desktop.html // html entry (layout html goes here)
 |    |    ├── desktop.css // common css for desktop
 |    |    └── index.js // JS entry
@@ -133,7 +144,7 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 
 # Domo Widgets (visualization components)
 
-Domo has a growing library of visualization components (we call them widgets) that we have developed over time and incorporated into the apps that we have created. These widgets are built on top of a charting library called [d3.js](http://d3js.org/) and a framework on top of d3.js called [d3.chart](http://misoproject.com/d3-chart/). In order to consume these widgets, you don't *need* to be very familiar with these libraries and frameworks although a familiarity would be helpful. 
+Domo has a growing library of visualization components (we call them widgets) that we have developed over time and incorporated into the apps that we have created. These widgets are built on top of a charting library called [d3.js](http://d3js.org/) and a framework on top of d3.js called [d3.chart](http://misoproject.com/d3-chart/). In order to consume these widgets, you don't *need* to be very familiar with these libraries and frameworks although a familiarity would be helpful.
 
 These widgets are available to download as dependencies to your project via [NPM](https://www.npmjs.com/) and they are all name-spaced to the [@domoinc](https://www.npmjs.com/org/domoinc) organization. They are bundled as [UMD](https://github.com/umdjs/umd) modules so they should be consumable by most JavaScript bundlers and module systems (eg. RequireJS, Webpack, Browserify, Rollup). To see a list of all of our available widgets, simply navigate your browser to [https://www.npmjs.com/org/domoinc](https://www.npmjs.com/org/domoinc).
 
@@ -144,7 +155,7 @@ These widgets are available to download as dependencies to your project via [NPM
 4. Set chart's configurable options via `config` method.
 5. Set chart's accessor functions via `accessor` method.
 6. Draw chart by passing data to chart method.
-   
+
 ```js
  // CommonJS (webpack, browserify)
  const d3 = require('d3');
@@ -153,7 +164,7 @@ These widgets are available to download as dependencies to your project via [NPM
    .accessor('value', 'value', d => d.value)
    .config('width', 500)
    .draw(data);
- 
+
  // AMD (RequireJS)
  define(['d3', 'bar-chart'], function(d3, BarChart) {
  var chart = new BarChart(d3.select('#chart'));
@@ -162,7 +173,7 @@ These widgets are available to download as dependencies to your project via [NPM
     .config('width', 500)
     .draw(data);
  });
- 
+
  // globals (via script tag)
  var chart = new BarChart(d3.select('#chart'));
  chart

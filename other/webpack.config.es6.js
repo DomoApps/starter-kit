@@ -31,20 +31,18 @@ const cssnano = require('cssnano');
 const messages = require('postcss-browser-reporter');
 const autoprefixer = require('autoprefixer');
 
-// for the commonChunksPlugin, items get added to this array based on conigs
-const commonChunks = ['common'];
+// Environment
+const ON_DEV = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
 const ON_TEST = process.env.NODE_ENV === 'test';
+const ON_PROD = process.env.NODE_ENV === 'production';
 const pkg = require('../package.json');
 
 const config = {
   cache: false,
   context: path.resolve(__dirname, '../src'),
 
-  // the entry point of your library
-  entry: {
-    common: './common/index.js'
-    // more things get added here based on configs at top of file.
-  },
+  // We will add entry points based on the platform configs.
+  entry: {},
 
   // where 3rd-party modules can reside
   resolve: {
@@ -96,20 +94,14 @@ const config = {
       new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
     ),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: '/commons.js',
-      minChunks: 3,
-      chunks: commonChunks,
-    }),
     new NgAnnotatePlugin({
       add: true,
       remove: false
     }),
     new webpack.DefinePlugin({
-      ON_DEV: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
+      ON_DEV: ON_DEV,
       ON_TEST: ON_TEST,
-      ON_PROD: process.env.NODE_ENV === 'production'
+      ON_PROD: ON_PROD
     })
   ],
 
@@ -167,7 +159,7 @@ const config = {
       reporter()
     ];
     // only minify when on production
-    if (process.env.NODE_ENV === 'production') {
+    if (ON_PROD) {
       postcssPlugins.push(cssnano({
         mergeRules: false,
         zindex: false,
@@ -199,7 +191,7 @@ const config = {
 /**
  * If on production then minify code else (on dev) and turn on hot module replacement.
  */
-if (process.env.NODE_ENV === 'production') {
+if (ON_PROD) {
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }));
 } else {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -214,21 +206,20 @@ if (!INCLUDE_DESKTOP_VIEW && !INCLUDE_MOBILE_VIEW) {
   throw new Error('You must include at least one view!');
 }
 /**
- * Setup the mobile view if INCLUDE_MOBILE_VIEW is set to true
+ * Setup the desktop view if INCLUDE_DESKTOP_VIEW is set to true
  */
 if (INCLUDE_DESKTOP_VIEW) {
   config.entry.desktop = './desktop/index.js';
-  commonChunks.push('desktop');
   if (!ON_TEST) {
     config.plugins.push(
       new HtmlWebpackPlugin({
         title: 'Desktop',
-        dev: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
+        dev: ON_DEV,
         pkg: pkg,
         template: 'src/desktop/desktop.html', // Load a custom template
         inject: 'body', // Inject all scripts into the body
         filename: INCLUDE_MULTIPLE_VIEWS ? 'desktop/index.html' : 'index.html',
-        chunks: ['commons', 'common', 'desktop']
+        chunks: ['desktop']
       })
     );
   }
@@ -237,18 +228,17 @@ if (INCLUDE_DESKTOP_VIEW) {
  * Setup the mobile view if INCLUDE_MOBILE_VIEW is set to true
  */
 if (INCLUDE_MOBILE_VIEW) {
-  commonChunks.push('mobile');
   config.entry.mobile = './mobile/index.js';
   if (!ON_TEST) {
     config.plugins.push(
       new HtmlWebpackPlugin({
         title: 'Mobile',
-        dev: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
+        dev: ON_DEV,
         pkg: pkg,
         template: 'src/mobile/mobile.html', // Load a custom template
         inject: 'body', // Inject all scripts into the body
         filename: INCLUDE_MULTIPLE_VIEWS ? 'mobile/index.html' : 'index.html',
-        chunks: ['commons', 'common', 'mobile']
+        chunks: ['mobile']
       })
     );
   }
@@ -263,13 +253,13 @@ if (INCLUDE_MULTIPLE_VIEWS) {
     config.plugins.push(
       new HtmlWebpackPlugin({
         title: 'Switcher',
-        dev: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
+        dev: ON_DEV,
         pkg: pkg,
-        chunks: ['commons', 'switcher']
+        chunks: ['switcher']
       }),
       new HtmlWebpackPlugin({
         title: 'Lab',
-        dev: process.env.NODE_ENV === 'development' || !process.env.NODE_ENV,
+        dev: ON_DEV,
         pkg: pkg,
         template: 'lab.html',
         filename: 'lab.html',

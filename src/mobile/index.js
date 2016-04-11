@@ -1,15 +1,25 @@
 require('./mobile.css');
-const angular = require('angular');
 
-angular
-  .module('da.mobile', [
-    'ui.router',
-    'ngAnimate',
-    // require('./feature')(angular).name,
-  ])
+import angular from 'angular';
+import { attachAll, getNgModuleNames } from '../../other/boilerplate-utils.js';
+
+const ngDependencies = [
+  'ui.router',
+  'ngAnimate',
+  require('../common').name,
+  // Add additional external Angular dependencies here
+];
+
+ngDependencies.push.apply(ngDependencies, getNgModuleNames(require.context('./routes', true, /index\.js$/)));
+
+
+const ngModule = angular.module('da.mobile', ngDependencies)
   .constant('$', require('jquery'))
   .constant('d3', require('d3'))
-  .constant('_', require('lodash'))
-  .config($urlRouterProvider => {
-    $urlRouterProvider.otherwise('/');
-  });
+  .constant('_', require('lodash'));
+
+attachAll(require.context('./components', true, /\.(component|directive)\.js$/))(ngModule);
+attachAll(require.context('./containers', true, /\.(component|directive)\.js$/))(ngModule);
+
+ngModule.config(require('./mobile.config.js'))
+  .run(require('./mobile.init.js'));
