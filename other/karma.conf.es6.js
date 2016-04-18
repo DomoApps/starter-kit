@@ -11,14 +11,14 @@ const cdns = [
   'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-animate.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-animate.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js',
 ];
 
 const entry = [
   ...cdns,
-  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-mocks.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-mocks.js',
 ];
 const preprocessors = {};
 for (const chunk in webpackConfig.entry) {
