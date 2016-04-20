@@ -24,7 +24,6 @@
   "devDependencies": {
     "@domoinc/da-plop": "^2.0.0",
     "autoprefixer": "^6.1.2",
-    "babel": "^6.3.13",
     "babel-core": "^6.3.17",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.1",
@@ -90,7 +89,6 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.3.14"
   },
   "config": {
     "commitizen": {
