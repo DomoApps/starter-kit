@@ -22,7 +22,7 @@
   "repository": "https://github.com/DomoApps/starter-kit",
   "license": "MIT",
   "devDependencies": {
-    "@domoinc/da-plop": "^2.0.0",
+    "@domoinc/da-plop": "^2.0.1",
     "autoprefixer": "^6.1.2",
     "babel-core": "^6.3.17",
     "babel-loader": "^6.2.0",
@@ -88,8 +88,7 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "^1.14.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
