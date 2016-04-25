@@ -1,4 +1,3 @@
-require('babel-polyfill');
 require('./styles/typebase.css');
 
 import angular from 'angular';

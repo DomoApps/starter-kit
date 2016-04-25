@@ -54,7 +54,7 @@ module.exports = ngModule => {
   ngModule.factory('daEvents', daEvents);
 
   if (ON_TEST) {
-    require('./daEvents.spec.js')(ngModule);
+    require('./da-events.factory.spec.js')(ngModule);
   }
 
   return ngModule;
