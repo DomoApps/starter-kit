@@ -29,7 +29,10 @@ const server = new WebpackDevServer(compiler, {
 });
 
 // domo data service proxy
-server.app.get('/data/v1/:query', (req, res) => {
+server.app.get('/data/v1/:query', proxyRequest);
+server.app.post('/data/v1/:query', proxyRequest);
+
+function proxyRequest(req, res) {
   const manifest = fs.readJsonSync(path.resolve(process.cwd() + '/domo/manifest.json'));
   let baseUrl;
   domainPromise
@@ -52,13 +55,14 @@ server.app.get('/data/v1/:query', (req, res) => {
         headers: {
           referer: referer,
           accept: req.headers.accept
-        }
+        },
+        data: req.body
       }).pipe(res);
     })
     .catch(err => {
       console.warn(err);
     });
-});
+}
 
 // start server
 checkSession().then(() => {
