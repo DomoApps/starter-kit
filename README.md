@@ -8,10 +8,11 @@
 1. clone this repo
     `$ git clone https://github.com/DomoApps/starter-kit.git {APP_NAME}`
 2. install dependencies `$ npm install`
-3. create new (empty) repo on github and copy it's SSH link
+3. create new (empty) repo on github and copy its SSH link
 4. run setup command `$ npm run setup` and follow prompts
 5. configure `domo/manifest.json` file
-6. upload to domo `$ npm run upload`
+6. run `domo login` if you are not already authenticated
+7. upload to domo `$ npm run upload`
 
 ### What does the setup task do?
 1. Configures `package.json` { name, version, decription, repository } props.
