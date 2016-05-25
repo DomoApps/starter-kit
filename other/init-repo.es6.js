@@ -5,8 +5,7 @@ import inquirer from 'inquirer';
 import kebabCase from 'lodash.kebabcase';
 import shelljs from 'shelljs';
 
-// TODO: update with the repo location on Github after we migrate
-const STARTER_REPO = 'git@git.empdev.domo.com:AppTeam6/da-webpack.git';
+const STARTER_REPO = 'https://github.com/DomoApps/starter-kit.git';
 const GENERATOR_KEYWORDS = ['da-webpack', 'starter-kit'];
 
 const QUESTIONS = [

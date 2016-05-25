@@ -6,7 +6,7 @@
 
 ## Getting Started
 1. clone this repo
-    `$ git clone git@git.empdev.domo.com:AppTeam6-Lib/da-webpack.git {APP_NAME}`
+    `$ git clone https://github.com/DomoApps/starter-kit.git {APP_NAME}`
 2. install dependencies `$ npm install`
 3. create new (empty) repo on github and copy it's SSH link
 4. run setup command `$ npm run setup` and follow prompts
