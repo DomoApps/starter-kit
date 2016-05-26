@@ -29,7 +29,7 @@
 5. pushes changes to remote.
 
 ## Usage
-- `$ npm setup` to setup your repo to new git remote
+- `$ npm run setup` to setup your repo to new git remote
 - `$ npm start` to run webpack-dev-server
 - `$ npm test` to run unit tests
 - `$ npm run tdd` to continuously run tests
@@ -136,6 +136,8 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 ...
 
 ```
+
+This folder structure is optimized for component-based development. Read more on the [project wiki](https://github.com/DomoApps/starter-kit/wiki/Component-Based-Development).
 
 ## Style Guides
 - For now, we're writing everything as CommonJS2 modules.
