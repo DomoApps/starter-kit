@@ -4,6 +4,12 @@
 
 ![App Thumbnail](domo/thumbnail.png)
 
+## Prerequisites
+1. [domo-cli](https://domoapps.herokuapp.com/dev-kit)
+    `npm install -g ryuu`
+2. [plop](https://www.npmjs.com/package/plop)
+    `npm install -g plop`
+
 ## Getting Started
 1. clone this repo
     `$ git clone https://github.com/DomoApps/starter-kit.git {APP_NAME}`
@@ -13,6 +19,7 @@
 5. configure `domo/manifest.json` file
 6. run `domo login` if you are not already authenticated
 7. upload to domo `$ npm run upload`
+8. copy the id and value from `dist/manifest.json` to `domo/manifest.json`
 
 ### What does the setup task do?
 1. Configures `package.json` { name, version, decription, repository } props.
@@ -26,7 +33,7 @@
 - `$ npm start` to run webpack-dev-server
 - `$ npm test` to run unit tests
 - `$ npm run tdd` to continuously run tests
-- `$ npm run eslint` to lint code
+- `$ npm run lint` to lint code
 - `$ npm run build` to build (and minify)
 - `$ npm version (patch|minor|major)` to create git release
 - `$ npm run upload` to upload new version to domo. aka `domo publish`
