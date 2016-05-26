@@ -21,6 +21,8 @@
 7. upload to domo `$ npm run upload`
 8. copy the id and value from `dist/manifest.json` to `domo/manifest.json`
 
+Read more about using starter-kit on the [project wiki](https://github.com/DomoApps/starter-kit/wiki).
+
 ### What does the setup task do?
 1. Configures `package.json` { name, version, decription, repository } props.
 2. renames git remote to this repo from 'origin' to generator.
