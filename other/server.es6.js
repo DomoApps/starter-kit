@@ -96,9 +96,7 @@ function getMostRecentLogin() {
   }
 
   const mostRecentLogin = logins.reduce((prev, next) => {
-    return fs.statSync(prev)
-      .mtime > fs.statSync(next)
-      .mtime ? prev : next;
+    return fs.statSync(prev).mtime > fs.statSync(next).mtime ? prev : next;
   });
   return fs.readJsonSync(mostRecentLogin);
 }
