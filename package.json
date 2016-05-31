@@ -89,7 +89,9 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "^1.14.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ryuu.js": "^2.5.4"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
