@@ -8,6 +8,12 @@ import shelljs from 'shelljs';
 const STARTER_REPO = 'https://github.com/DomoApps/starter-kit.git';
 const GENERATOR_KEYWORDS = ['da-webpack', 'starter-kit'];
 
+const DOMO_STRICT_LICENSE = [
+  'Copyright (C) 2016 Domo, Inc - All Rights Reserved',
+  'Unauthorized copying of any files, via any medium is strictly prohibited',
+  'Proprietary and confidential'
+].join('\n');
+
 const QUESTIONS = [
   {
     type: 'input',
@@ -79,6 +85,7 @@ function initializeProject() {
   inquirer.prompt(QUESTIONS, answers => {
     setupPackage({ name: kebabCase(answers.name), description: answers.description, git: answers.git })
       .then(setupGit)
+      .then(replaceLicense)
       .then(() => {
         console.log(chalk.green('Success!'));
         console.log(chalk.white('Don\'t forget to setup your manifest.json and run `npm run upload`'));
@@ -115,6 +122,17 @@ function setupGit({ name, description, git }) {
   shelljs.exec('git remote rename origin generator');
   shelljs.exec(`git remote add origin ${git}`);
   shelljs.exec('git push -u origin master');
+}
+
+function replaceLicense() {
+  return new Promise((resolve, reject) => {
+    const licensePath = path.resolve(__dirname, '../LICENSE');
+    fs.writeFile(licensePath, DOMO_STRICT_LICENSE, (err, data) => {
+      if (err) return reject(err);
+
+      resolve();
+    });
+  });
 }
 
 

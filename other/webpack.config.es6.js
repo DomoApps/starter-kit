@@ -18,6 +18,7 @@ const INCLUDE_DESKTOP_VIEW = (configOptions.hasOwnProperty('includeDesktopView')
 const INCLUDE_MOBILE_VIEW = (configOptions.hasOwnProperty('includeMobileView') ? configOptions.includeMobileView : true);
 
 // dependencies
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -36,6 +37,7 @@ const ON_DEV = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV;
 const ON_TEST = process.env.NODE_ENV === 'test';
 const ON_PROD = process.env.NODE_ENV === 'production';
 const pkg = require('../package.json');
+const bannerText = fs.readFileSync(path.resolve(__dirname, '../BANNER.txt')).toString();
 
 const config = {
   cache: false,
@@ -98,6 +100,7 @@ const config = {
       add: true,
       remove: false
     }),
+    new webpack.BannerPlugin(bannerText),
     new webpack.DefinePlugin({
       ON_DEV: ON_DEV,
       ON_TEST: ON_TEST,
