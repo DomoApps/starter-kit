@@ -1,6 +1,6 @@
 {
   "name": "start-kit",
-  "version": "0.0.5",
+  "version": "0.0.0",
   "description": "A starter for writing Domo Apps in ES6",
   "scripts": {
     "setup": "node other/setup.js",
@@ -93,6 +93,11 @@
     "ryuu.js": "^2.5.4"
   },
   "config": {
+    "AppTeam6": {
+      "framework": "da-webpack",
+      "frameworkVersion": "0.0.5",
+      "features": []
+    },
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
