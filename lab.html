@@ -150,7 +150,7 @@
 
       <div class="wrapper" style="width: 375px; height: 667px;">
         <div class="close"><span>✕<span></div>
-        <iframe id="mobile" style="width: 100%; height: 100%;"></iframe>
+        <iframe id="responsive" style="width: 100%; height: 100%;"></iframe>
         <div class="size">375 x 667</div>
       </div>
     </div>
@@ -163,7 +163,7 @@
           <button type="submit" id="setLocale">Set Locale</button>
         </form>
         <button id="goDesktop">Go to Desktop</button>
-        <button id="goMobile">Go to Mobile</button>
+        <button id="goResponsive">Go to Responsive</button>
       </div>
     </div>
     <script>
@@ -172,7 +172,7 @@
         var match = re.exec(location.search);
         var locale = match ? match[1] : 'en-US';
         document.querySelector('#desktop').src = '/desktop/index.html?userId=27&customer=dev&locale='+locale+'&platform=desktop';
-        document.querySelector('#mobile').src = '/mobile/index.html?userId=27&customer=dev&locale='+locale+'&platform=mobile';
+        document.querySelector('#responsive').src = '/responsive/index.html?userId=27&customer=dev&locale='+locale+'&platform=responsive';
 
         var open = false;
         document.querySelector('.menu-button').onclick = function () {
@@ -187,15 +187,15 @@
         document.querySelector('#setLocale').onclick = function () {
           locale = document.querySelector('#locale').value;
           document.querySelector('#desktop').src = '/desktop/index.html?userId=27&customer=dev&locale='+locale+'&platform=desktop';
-          document.querySelector('#mobile').src = '/mobile/index.html?userId=27&customer=dev&locale='+locale+'&platform=mobile';
+          document.querySelector('#responsive').src = '/responsive/index.html?userId=27&customer=dev&locale='+locale+'&platform=responsive';
         };
 
         document.querySelector('#goDesktop').onclick = function () {
           location.href = '/desktop/index.html?userId=27&customer=dev&locale='+locale+'&platform=desktop';
         };
 
-        document.querySelector('#goMobile').onclick = function () {
-          location.href = '/mobile/index.html?userId=27&customer=dev&locale='+locale+'&platform=mobile';
+        document.querySelector('#goResponsive').onclick = function () {
+          location.href = '/responsive/index.html?userId=27&customer=dev&locale='+locale+'&platform=responsive';
         };
 
         var drag = d3.behavior.drag();

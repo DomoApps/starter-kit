@@ -6,6 +6,6 @@
     "files": [
         "src/common/index.js",
         "src/desktop/index.js",
-        "src/mobile/index.js"
+        "src/responsive/index.js"
     ]
 }

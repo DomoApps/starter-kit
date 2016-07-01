@@ -15,7 +15,7 @@ module.exports = function getConfig(configOptions) {
 
 // Handle options
 const INCLUDE_DESKTOP_VIEW = (configOptions.hasOwnProperty('includeDesktopView') ? configOptions.includeDesktopView : true);
-const INCLUDE_MOBILE_VIEW = (configOptions.hasOwnProperty('includeMobileView') ? configOptions.includeMobileView : true);
+const INCLUDE_RESPONSIVE_VIEW = (configOptions.hasOwnProperty('includeResponsiveView') ? configOptions.includeResponsiveView : true);
 
 // dependencies
 const fs = require('fs');
@@ -204,8 +204,8 @@ if (ON_PROD) {
 /**
  * Logic to change build based on configs at top of file.
  */
-const INCLUDE_MULTIPLE_VIEWS = INCLUDE_DESKTOP_VIEW && INCLUDE_MOBILE_VIEW;
-if (!INCLUDE_DESKTOP_VIEW && !INCLUDE_MOBILE_VIEW) {
+const INCLUDE_MULTIPLE_VIEWS = INCLUDE_DESKTOP_VIEW && INCLUDE_RESPONSIVE_VIEW;
+if (!INCLUDE_DESKTOP_VIEW && !INCLUDE_RESPONSIVE_VIEW) {
   throw new Error('You must include at least one view!');
 }
 /**
@@ -228,27 +228,27 @@ if (INCLUDE_DESKTOP_VIEW) {
   }
 }
 /**
- * Setup the mobile view if INCLUDE_MOBILE_VIEW is set to true
+ * Setup the responsive view if INCLUDE_RESPONSIVE_VIEW is set to true
  */
-if (INCLUDE_MOBILE_VIEW) {
-  config.entry.mobile = './mobile/index.js';
+if (INCLUDE_RESPONSIVE_VIEW) {
+  config.entry.responsive = './responsive/index.js';
   if (!ON_TEST) {
     config.plugins.push(
       new HtmlWebpackPlugin({
-        title: 'Mobile',
+        title: 'Responsive',
         dev: ON_DEV,
         pkg: pkg,
-        template: 'src/mobile/mobile.html', // Load a custom template
+        template: 'src/responsive/responsive.html', // Load a custom template
         inject: 'body', // Inject all scripts into the body
-        filename: INCLUDE_MULTIPLE_VIEWS ? 'mobile/index.html' : 'index.html',
-        chunks: ['mobile']
+        filename: INCLUDE_MULTIPLE_VIEWS ? 'responsive/index.html' : 'index.html',
+        chunks: ['responsive']
       })
     );
   }
 }
 /**
  * add swither and lab view when app has multiple views.
- * INCLUDE_MULTIPLE_VIEWS is true when INCLUDE_DESKTOP_VIEW and INCLUDE_MOBILE_VIEW views are both true
+ * INCLUDE_MULTIPLE_VIEWS is true when INCLUDE_DESKTOP_VIEW and INCLUDE_RESPONSIVE_VIEW views are both true
  */
 if (INCLUDE_MULTIPLE_VIEWS) {
   config.entry.switcher = './switcher.js';
