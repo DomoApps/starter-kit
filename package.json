@@ -90,6 +90,7 @@
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "enquire.js": "^2.1.1",
     "ryuu.js": "^2.5.4"
   },
   "config": {

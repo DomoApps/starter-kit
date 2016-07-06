@@ -1,31 +1,28 @@
+const VIEW_DESKTOP_ON_TABLET = true;
+
 /**
- * DO NOT EDIT ME!
+ * DO NOT EDIT BELOW ME!
  */
-const re = /platform=(\w+)\W*/ig;
-const match = re.exec(location.search);
 
-if (match) {
-  const platform = match[1];
-  const params = location.search || '';
-  const url = '/' + platform + '/index.html' + params;
+const enquire = require('enquire.js');
 
-  const request = new XMLHttpRequest();
-  request.open('GET', url, true);
-  request.onload = function onLoad() {
-    if (request.status >= 200 && request.status < 400) {
-      window.location.replace(url);
+// Timeout to wait one frame while webpack moves to the correct build file
+setTimeout(() => {
+  /* Desktops and laptops ----------- */
+  enquire.register('only screen and (min-width : 1025px)', () => {
+    window.location.replace('/desktop/index.html');
+  });
+
+  enquire.register('only screen and (max-width : 767px)', () => {
+    window.location.replace('/responsive/index.html');
+  });
+
+  /* iPads (portrait and landscape) ----------- */
+  enquire.register('only screen and (min-device-width : 768px) and (max-device-width : 1024px)', () => {
+    if (VIEW_DESKTOP_ON_TABLET) {
+      window.location.replace('/desktop/index.html');
     } else {
-      window.location.replace('/desktop/index.html' + params);
+      window.location.replace('/responsive/index.html');
     }
-  };
-
-  request.onerror = function onError() {
-    window.location.replace('/desktop/index.html' + params);
-  };
-
-  request.send();
-} else if (location.hostname === 'localhost') {
-  window.location.replace('/lab.html');
-} else {
-  window.location.replace('/desktop/index.html');
-}
+  });
+});
