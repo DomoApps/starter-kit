@@ -9,7 +9,7 @@ const getConfig = require('./other/webpack.config.es6');
  * https://github.com/DomoApps/starter-kit/wiki/Webpack-Configuration
  */
 module.exports = getConfig({
-  includeDesktopView: true,
+  includeDesktopView: false,
   includeResponsiveView: true,
   externals: {
     // Include your app's extra externals here
