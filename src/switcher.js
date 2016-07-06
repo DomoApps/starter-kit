@@ -6,8 +6,7 @@ const DESKTOP_VIEW_ON_TABLET = false;
 
 const enquire = require('enquire.js');
 
-// Timeout to wait one frame while webpack moves to the correct build file
-setTimeout(() => {
+function redirect() {
   /* Desktops and laptops ----------- */
   enquire.register('only screen and (min-width : 1025px)', () => {
     window.location.replace('/desktop/index.html');
@@ -25,4 +24,6 @@ setTimeout(() => {
       window.location.replace('/responsive/index.html');
     }
   });
-});
+}
+
+window.requestAnimationFrame(redirect);
