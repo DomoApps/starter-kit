@@ -3,3 +3,23 @@
 body {
   color: $domo-blue;
 }
+
+.short {
+  background-color: blue;
+  width: 25%;
+}
+
+.medium {
+  background-color: green;
+  width: 50%;
+}
+
+.long {
+  background: purple;
+  width: 75%;
+}
+
+.reallylong {
+  background-color: red;
+  width: 100%;
+}

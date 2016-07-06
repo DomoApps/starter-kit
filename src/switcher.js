@@ -8,11 +8,16 @@ const enquire = require('enquire.js');
 
 function redirect() {
   /* Desktops and laptops ----------- */
-  enquire.register('only screen and (min-width : 1025px)', () => {
+  enquire.register('only screen and (min-width : 768px)', () => {
     window.location.replace('/desktop/index.html');
   });
 
   enquire.register('only screen and (max-width : 767px)', () => {
+    window.location.replace('/responsive/index.html');
+  });
+
+  /* Smartphones (portrait and landscape) ----------- */
+  enquire.register('only screen and (min-device-width : 320px) and (max-device-width : 767px)', () => {
     window.location.replace('/responsive/index.html');
   });
 

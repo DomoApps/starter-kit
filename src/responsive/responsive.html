@@ -20,6 +20,18 @@
   <div id="appContainer">
     <h1>Responsive</h1>
     <div ui-view></div>
+    <div class="short">
+      25%
+    </div>
+    <div class="medium">
+      50%
+    </div>
+    <div class="long">
+      75%
+    </div>
+    <div class="reallylong">
+      100%
+    </div>
   </div>
   {% if (o.htmlWebpackPlugin.options.dev) { %}<script src="/webpack-dev-server.js"></script>{% } %}
   <!-- {%= o.htmlWebpackPlugin.options.pkg.name + ' v' + o.htmlWebpackPlugin.options.pkg.version + ' built on ' + new Date() %} -->
