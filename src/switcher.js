@@ -1,4 +1,4 @@
-const VIEW_DESKTOP_ON_TABLET = true;
+const DESKTOP_VIEW_ON_TABLET = false;
 
 /**
  * DO NOT EDIT BELOW ME!
@@ -19,7 +19,7 @@ setTimeout(() => {
 
   /* iPads (portrait and landscape) ----------- */
   enquire.register('only screen and (min-device-width : 768px) and (max-device-width : 1024px)', () => {
-    if (VIEW_DESKTOP_ON_TABLET) {
+    if (DESKTOP_VIEW_ON_TABLET) {
       window.location.replace('/desktop/index.html');
     } else {
       window.location.replace('/responsive/index.html');
