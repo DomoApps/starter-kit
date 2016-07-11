@@ -8,7 +8,6 @@ const enquire = require('enquire.js');
 
 
 function redirect() {
-  console.log(window.innerWidth);
   /* Desktops and laptops ----------- */
   enquire.register('only screen and (min-width : 1025px)', () => {
     window.location.replace('/desktop/index.html');
@@ -19,7 +18,7 @@ function redirect() {
   });
 
   /* iPads (portrait and landscape) ----------- */
-  enquire.register('only screen and (min-width : 736px) and (orientation: portrait), only screen and (min-width: 737px) and (max-width : 1024px)', () => {
+  enquire.register('only screen and (min-width : 736px) and (orientation: portrait) and (max-width : 1024px), only screen and (min-width: 737px) and (max-width : 1024px)', () => {
     if (DESKTOP_VIEW_ON_TABLET) {
       window.location.replace('/desktop/index.html');
     } else {
