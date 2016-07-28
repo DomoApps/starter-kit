@@ -91,6 +91,7 @@
   },
   "dependencies": {
     "enquire.js": "^2.1.1",
+    "ng-redux": "^3.3.3",
     "ryuu.js": "^2.5.4"
   },
   "config": {

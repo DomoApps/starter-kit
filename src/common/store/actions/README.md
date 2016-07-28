@@ -1,0 +1,2 @@
+- Place your action creator files in this directory.
+- See [here](http://redux.js.org/docs/basics/Actions.html) for examples.

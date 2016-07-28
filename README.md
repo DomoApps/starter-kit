@@ -64,10 +64,12 @@ Under the hood, this script is running `git merge --no-commit generator/master`.
 If you would like to add/edit/remove a dependency from a CDN, you'll need to add/edit/remove the script tag in your main HTML file, you'll also have to add/edit/remove it to the `webpack.config.js`'s `externals` property and to the `karma.conf.js`'s array variable called CDNS.
 
 ## Technology
-- [webpack](http://webpack.github.io/)
+- [Webpack](http://webpack.github.io/)
 - [ES2015 via Babel](https://babeljs.io/docs/learn-es2015/)
-- [postcss & precss](https://github.com/jonathantneal/precss)
-- [angular 1.x](https://angularjs.org/)
+- [Postcss & Precss](https://github.com/jonathantneal/precss)
+- [Angular 1.x](https://angularjs.org/)
+- [ngRedux](https://github.com/angular-redux/ng-redux)
+- [Redux](http://redux.js.org/docs/introduction/)
 
 ## Features
 - Unit Testing
@@ -104,6 +106,11 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 |    |    |
 |    |    ├── services // place for common services
 |    |    |
+|    |    ├── store // place for Redux files
+|    |    |    ├── actions // Action creator files
+|    |    |    ├── constants // Redux action constants
+|    |    |    └── reducers // Reducer files. Reducer files must export a named module, not default.
+|    |    |         └── index.js // Automatically combines all reducers into one to create the store in the top level config file.
 |    |    ├── styles // place for common styles
 |    |    |    ├── typebase.css // base type for all apps
 |    |    |    └── variable.css // variables
