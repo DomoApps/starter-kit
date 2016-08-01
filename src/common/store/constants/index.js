@@ -10,9 +10,9 @@ const constants = generateConstants([
 export default constants;
 
 function generateConstants(names) {
-  const constants = {};
+  const constantsMap = {};
   names.forEach(name => {
-    constants[name] = name;
+    constantsMap[name] = name;
   });
-  return Object.freeze(constants);
+  return Object.freeze(constantsMap);
 }
