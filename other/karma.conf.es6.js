@@ -6,15 +6,8 @@ delete webpackConfig.devtool;
 webpackConfig.cache = true;
 
 let file;
-// Add new cdns resouces here.
-const cdns = [
-  'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-animate.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js',
-];
+
+const cdns = Object.values(require('../package.json').cdnDependencies);
 
 const entry = [
   ...cdns,
