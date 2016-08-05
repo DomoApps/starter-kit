@@ -68,8 +68,7 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 - [ES2015 via Babel](https://babeljs.io/docs/learn-es2015/)
 - [Postcss & Precss](https://github.com/jonathantneal/precss)
 - [Angular 1.x](https://angularjs.org/)
-- [ngRedux](https://github.com/angular-redux/ng-redux)
-- [Redux](http://redux.js.org/docs/introduction/)
+- [Redux](http://redux.js.org/docs/introduction/) and [ngRedux](https://github.com/angular-redux/ng-redux)
 
 ## Features
 - Unit Testing
