@@ -1,63 +1,52 @@
-const path = require('path');
+module.exports = config => {
+  // load external cdn dependencies
+  const cdns = Object.values(require('../package.json').cdnDependencies);
+  // add angular mocks
+  const externalFiles = [
+    ...cdns,
+    'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-mocks.js',
+  ];
 
-// load webpack config here for for webpack preprocessor
-const webpackConfig = require('../webpack.config');
-delete webpackConfig.devtool;
-webpackConfig.cache = true;
+  // entry file that bundles all the test files
+  const testEntryFile = './other/tests.js';
 
-let file;
+  const webpackConfig = require('../webpack.config');
+  const webpackJsLoader = webpackConfig.module.loaders.filter(loader => {
+    return loader.loader === 'babel';
+  });
 
-const cdns = Object.values(require('../package.json').cdnDependencies);
-
-const entry = [
-  ...cdns,
-  'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-mocks.js',
-];
-const preprocessors = {};
-for (const chunk in webpackConfig.entry) {
-  if ({}.hasOwnProperty.call(webpackConfig.entry, chunk)) {
-    file = path.resolve(webpackConfig.context, webpackConfig.entry[chunk]);
-    entry.push(file);
-    preprocessors[file] = ['webpack'];
-  }
-}
-
-module.exports = (config) => {
   config.set({
-    basePath: './',
     frameworks: ['mocha', 'chai', 'sinon'],
-    files: entry,
-    webpack: webpackConfig,
-
+    files: [
+      ...externalFiles,
+      testEntryFile
+    ],
+    preprocessors: {
+      [testEntryFile]: ['webpack', 'sourcemap']
+    },
+    webpack: {
+      module: {
+        loaders: webpackJsLoader
+      },
+      devtool: 'inline-source-map'
+    },
     webpackMiddleware: {
       noInfo: true
     },
-
-    // list of files to exclude
-    exclude: [
-      'src/switcher.js'
-    ],
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: preprocessors,
-
+    // how the test success/failure status is reported:
     reporters: ['dots'],
-    port: 9876,
-    colors: true,
-    autoWatch: true,
+    logLevel: config.LOG_ERROR,
     browsers: ['PhantomJS', 'Chrome', 'Firefox', 'Safari'],
     plugins: [
-      require('karma-webpack'),
-      'karma-coverage',
       'karma-phantomjs-launcher',
+      'karma-sourcemap-loader',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-safari-launcher',
       'karma-mocha',
       'karma-chai',
       'karma-sinon',
-    ],
-    logLevel: config.LOG_ERROR
+      'karma-webpack'
+    ]
   });
 };
