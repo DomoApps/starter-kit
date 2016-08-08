@@ -9,12 +9,9 @@
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js" charset="utf-8"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-animate.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+  {% for (var dependency in o.htmlWebpackPlugin.options.pkg.cdnDependencies) { %}
+    <script src="{%= o.htmlWebpackPlugin.options.pkg.cdnDependencies[dependency] %}"></script>
+  {% } %}
 </head>
 <body ng-cloak ng-app="da.responsive">
   <div id="appContainer">
