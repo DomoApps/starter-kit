@@ -11,9 +11,7 @@ module.exports = config => {
   const testEntryFile = './other/tests.js';
 
   const webpackConfig = require('../webpack.config');
-  const webpackJsLoader = webpackConfig.module.loaders.filter(loader => {
-    return loader.loader === 'babel';
-  });
+  const webpackLoaders = webpackConfig.module.loaders;
 
   config.set({
     frameworks: ['mocha', 'chai', 'sinon'],
@@ -26,7 +24,7 @@ module.exports = config => {
     },
     webpack: {
       module: {
-        loaders: webpackJsLoader
+        loaders: webpackLoaders
       },
       devtool: 'inline-source-map'
     },
