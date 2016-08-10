@@ -102,6 +102,9 @@
     "angular-animate": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-animate.min.js",
     "angular-ui-router": "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"
   },
+  "testingDependencies": {
+    "angular-mocks": "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-mocks.js"
+  },
   "config": {
     "AppTeam6": {
       "framework": "da-webpack",

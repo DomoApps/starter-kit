@@ -1,10 +1,12 @@
 module.exports = config => {
   // load external cdn dependencies
-  const cdns = Object.values(require('../package.json').cdnDependencies);
+  const pkg = require('../package.json');
+  const cdns = Object.values(pkg.cdnDependencies);
+  const testingDeps = Object.values(pkg.testingDependencies);
   // add angular mocks
   const externalFiles = [
     ...cdns,
-    'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-mocks.js',
+    ...testingDeps
   ];
 
   // entry file that bundles all the test files
