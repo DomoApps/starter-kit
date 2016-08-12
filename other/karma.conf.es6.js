@@ -2,12 +2,6 @@ module.exports = config => {
   // load external cdn dependencies
   const pkg = require('../package.json');
   const cdns = Object.values(pkg.cdnDependencies);
-  const testingDeps = Object.values(pkg.testingDependencies);
-  // add angular mocks
-  const externalFiles = [
-    ...cdns,
-    ...testingDeps
-  ];
 
   // entry file that bundles all the test files
   const testEntryFile = './other/tests.js';
@@ -18,7 +12,7 @@ module.exports = config => {
   config.set({
     frameworks: ['mocha', 'chai', 'sinon'],
     files: [
-      ...externalFiles,
+      ...cdns,
       testEntryFile
     ],
     preprocessors: {
