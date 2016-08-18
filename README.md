@@ -140,7 +140,7 @@ This folder structure is optimized for component-based development. Read more on
 
 ## Prerequisites for publishing
 - A thumbnail must be present in the domo folder under the name "thumbnail.png"
-- A valid json file named "manifest.json" must be present in the domo folder with the necessary meta data required by the domo cli [manifest.json documentation](https://developer.domo.com/docs/dev-studio/dev-studio-manifest-json-reference)
+- A valid json file named "manifest.json" must be present in the domo folder with the necessary meta data required by the domo cli. For more information on the manifest.json, please see [Domo's manifest.json documentation](https://developer.domo.com/docs/dev-studio/dev-studio-manifest-json-reference)
 
 ```text
 ├── domo
@@ -152,7 +152,7 @@ This folder structure is optimized for component-based development. Read more on
 ...
 
 ```
-If either of these files is missing, or if the manifest.json file is malformed, the publish will fail.
+If either of these files is missing, or if the manifest.json file is malformed, the publish will fail. For more on publishing, please see [Domo's publish and share documentation](https://developer.domo.com/docs/dev-studio/dev-studio-publish)
 
 ## Style Guides
 - For now, we're writing everything as CommonJS2 modules.
