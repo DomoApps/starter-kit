@@ -106,7 +106,7 @@
   },
   "config": {
     "AppTeam6": {
-      "framework": "da-webpack",
+      "framework": "starter-kit",
       "frameworkVersion": "0.0.7",
       "features": []
     },
