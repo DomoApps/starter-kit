@@ -84,8 +84,8 @@ checkSession()
       });
     });
   })
-  .catch(() => {
-    console.warn('Session expired. Please login again using domo login.');
+  .catch(reason => {
+    console.warn(reason);
   });
 
 // helpers
@@ -155,6 +155,11 @@ function createContext(designId, mapping) {
 
 function checkSession() {
   return new Promise((resolve, reject) => {
+    if (typeof mostRecent.devtoken !== 'undefined') {
+      reject('Token-based authentication is not currently supported by starter-kit.' +
+        ' Please run `domo token remove`, remove the token for ' + mostRecent.instance +
+        ', and log in with your Domo username and password.');
+    }
     const options = {
       url: `https://${mostRecent.instance}/auth/validate`,
       method: 'GET',
@@ -170,7 +175,7 @@ function checkSession() {
         if (isValid) {
           resolve(true);
         } else {
-          reject(false);
+          reject('Session expired. Please login again using domo login.');
         }
       } catch (e) {
         // couldn't parse as JSON which means the service doesn't exist yet.
