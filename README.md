@@ -2,8 +2,6 @@
 # Domo Apps Starter Kit
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-![App Thumbnail](domo/thumbnail.png)
-
 ## Prerequisites
 1. [domo-cli](https://domoapps.herokuapp.com/dev-kit)
     `npm install -g ryuu`
@@ -144,8 +142,23 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 ...
 
 ```
-
 This folder structure is optimized for component-based development. Read more on the [project wiki](https://github.com/DomoApps/starter-kit/wiki/Component-Based-Development).
+
+## Prerequisites for publishing
+- A thumbnail must be present in the domo folder under the name "thumbnail.png"
+- A valid json file named "manifest.json" must be present in the domo folder with the necessary meta data required by the domo cli. For more information on the manifest.json, please see [Domo's manifest.json documentation](https://developer.domo.com/docs/dev-studio/dev-studio-manifest-json-reference)
+
+```text
+├── domo
+|    ├── thumbnail.png // A thumnail for the app that will represent the app
+|    |                 // on mobile and in the asset library
+|    ├── manifest.json // The mapping file that communicates to the domo
+|    |                 // cli which asset ids and aliases are used
+
+...
+
+```
+If either of these files is missing, or if the manifest.json file is malformed, the publish will fail. For more on publishing, please see [Domo's publish and share documentation](https://developer.domo.com/docs/dev-studio/dev-studio-publish)
 
 ## Style Guides
 - For now, we're writing everything as CommonJS2 modules.
