@@ -22,7 +22,7 @@
   "repository": "https://github.com/DomoApps/starter-kit",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
-    "@domoinc/da-plop": "^4.0.1",
+    "@domoinc/da-plop": "^4.1.0",
     "angular-mocks": "^1.5.8",
     "autoprefixer": "^6.1.2",
     "babel-core": "^6.3.17",
