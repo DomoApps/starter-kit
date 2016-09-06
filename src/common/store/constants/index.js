@@ -1,18 +1,10 @@
-const constants = generateConstants([
 /*
-  Action constants go here. Constants should uppper snake cased.
-  'DATA_REQUESTED',
-  'BUTTON_CLICKED',
-  'INCREASE_COUNT'
+ * Export named constants only
+ * e.g.
+ * export const MY_ACTION_CONST = MY_ACTION_CONST;
+ * export const MY_ACTION_2_CONST = MY_ACTION_2_CONST;
+ *
+ * This allows for proper ES6 module importing into files
+ * e.g.
+ * import { MY_ACTION_CONST } from './constants'
  */
-]);
-
-export default constants;
-
-function generateConstants(names) {
-  const constantsMap = {};
-  names.forEach(name => {
-    constantsMap[name] = name;
-  });
-  return Object.freeze(constantsMap);
-}
