@@ -167,7 +167,8 @@ const config = {
         mergeRules: false,
         zindex: false,
         reduceIdents: false,
-        mergeIdents: false
+        mergeIdents: false,
+        safe: true
       }));
     } else {
       // use the message reported when on development
