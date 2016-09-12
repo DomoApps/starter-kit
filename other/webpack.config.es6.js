@@ -104,7 +104,10 @@ const config = {
     new webpack.DefinePlugin({
       ON_DEV: ON_DEV,
       ON_TEST: ON_TEST,
-      ON_PROD: ON_PROD
+      ON_PROD: ON_PROD,
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
     })
   ],
 
