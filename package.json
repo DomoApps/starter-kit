@@ -107,7 +107,7 @@
   "config": {
     "AppTeam6": {
       "framework": "da-webpack",
-      "frameworkVersion": "0.0.6",
+      "frameworkVersion": "0.0.7",
       "features": []
     },
     "commitizen": {
