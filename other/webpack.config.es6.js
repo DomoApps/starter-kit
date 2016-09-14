@@ -40,7 +40,6 @@ const pkg = require('../package.json');
 const bannerText = fs.readFileSync(path.resolve(__dirname, '../BANNER.txt')).toString();
 
 const config = {
-  cache: false,
   context: path.resolve(__dirname, '../src'),
 
   // We will add entry points based on the platform configs.
@@ -185,7 +184,7 @@ const config = {
     formatter: require('eslint-friendly-formatter'),
   },
 
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   devServer: {
     contentBase: 'dist/',
