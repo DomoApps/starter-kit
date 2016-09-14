@@ -262,6 +262,7 @@ if (INCLUDE_MULTIPLE_VIEWS) {
         title: 'Switcher',
         dev: ON_DEV,
         pkg: pkg,
+        template: 'index.html',
         chunks: ['switcher']
       }),
       new HtmlWebpackPlugin({
