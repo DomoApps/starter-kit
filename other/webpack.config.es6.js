@@ -184,7 +184,7 @@ const config = {
     formatter: require('eslint-friendly-formatter'),
   },
 
-  devtool: 'cheap-module-eval-source-map',
+  devtool: ON_PROD ? 'source-map' : 'cheap-module-eval-source-map',
 
   devServer: {
     contentBase: 'dist/',
