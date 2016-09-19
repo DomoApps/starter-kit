@@ -1,6 +1,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <style>
       body{
         background: red;
@@ -80,11 +81,6 @@
         cursor: move;
       }
 
-      .icon {
-        max-width: 50%;
-        pointer-events: none;
-      }
-
       .menu-options {
         box-sizing: border-box;
         padding: 15px;
@@ -135,6 +131,10 @@
         -ms-user-select: none;
       }
 
+      .fa-large {
+        font-size: 2em;
+      }
+
 
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js" charset="utf-8"></script>
@@ -155,7 +155,7 @@
     </div>
 
     <div class="menu-container" style="top: 88px;">
-      <div class="menu-button" draggable="true"><i class="icon icon-gear unselectable"></i></div>
+      <div class="menu-button" draggable="true"><i class="fa fa-cog fa-large"></i></div>
       <div class="menu-options unselectable">
         <form>
           <input id="locale" type="text" name="locale" value="en-US" />
