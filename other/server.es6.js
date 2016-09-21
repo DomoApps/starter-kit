@@ -20,6 +20,7 @@ portfinder.basePort = 3000;
 let baseUrl;
 const home = Domo.getHomeDir();
 const mostRecent = getMostRecentLogin();
+const domo = new Domo(mostRecent.instance, mostRecent.sid, mostRecent.devtoken);
 const manifest = fs.readJsonSync(path.resolve(process.cwd() + '/domo/manifest.json'));
 const domainPromise = getDomoappsDomain()
   .then(_baseUrl => baseUrl = _baseUrl)
@@ -46,23 +47,21 @@ server.app.all('/data/v1/:query', proxyRequest);
 function proxyRequest(req, res) {
   domainPromise
     .then(context => {
-      const j = request.jar();
       const url = baseUrl + req.url;
-      const auth = `DA-SID-${getCustomer()}="${mostRecent.sid}"`;
-      const cookie = request.cookie(auth);
-      j.setCookie(cookie, baseUrl);
+      const j = request.jar();
 
       const referer = req.headers.referer.indexOf('?') >= 0 ? `${req.headers.referer}&context=${context.id}` : `${req.headers.referer}?userId=27&customer=dev&locale=en-US&platform=desktop&context=${context.id}`; // jshint ignore:line
+      const headers = Object.assign({
+        referer,
+        accept: req.headers.accept,
+        'content-type': req.headers['content-type'] || req.headers['Content-Type']
+      }, domo.getAuthHeader());
 
       const r = request({
         url,
         method: req.method,
+        headers,
         jar: j,
-        headers: {
-          'content-type': req.headers['content-type'] || req.headers['Content-Type'],
-          referer,
-          accept: req.headers.accept
-        },
         body: JSON.stringify(req.body)
       });
 
@@ -113,14 +112,10 @@ function getEnv() {
 
 function getDomoappsDomain() {
   const uuid = Domo.createUUID();
-  const j = request.jar();
-  const auth = `SID="${mostRecent.sid}"`;
-  const cookie = request.cookie(auth);
-  j.setCookie(cookie, `https://${mostRecent.instance}`);
   return new Promise((resolve) => {
     request({
       url: `https://${mostRecent.instance}/api/content/v1/mobile/environment`,
-      jar: j
+      headers: domo.getAuthHeader()
     }, (err, res) => {
       if (res.statusCode === 200) {
         resolve(`https://${uuid}.${JSON.parse(res.body).domoappsDomain}`);
@@ -140,9 +135,7 @@ function createContext(designId, mapping) {
         designId,
         mapping
       },
-      headers: {
-        'X-Domo-Authentication': mostRecent.sid
-      }
+      headers: domo.getAuthHeader()
     };
 
     request(options, (err, res) => {
@@ -156,9 +149,9 @@ function createContext(designId, mapping) {
 function checkSession() {
   return new Promise((resolve, reject) => {
     if (typeof mostRecent.devtoken !== 'undefined') {
-      reject('Token-based authentication is not currently supported by starter-kit.' +
-        ' Please run `domo token remove`, remove the token for ' + mostRecent.instance +
-        ', and log in with your Domo username and password.');
+      // we don't have any way to check tokens, so we'll default to accent
+      // until this is fixed
+      resolve(true);
     }
     const options = {
       url: `https://${mostRecent.instance}/auth/validate`,
