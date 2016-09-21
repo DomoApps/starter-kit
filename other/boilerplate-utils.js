@@ -25,5 +25,5 @@ export function attachAll(context) {
  */
 export function getNgModuleNames(context) {
   const modules = context.keys().map(context);
-  return modules.map(module => module.name);
+  return modules.map(module => module.default.name);
 }
