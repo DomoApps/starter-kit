@@ -1,7 +1,8 @@
+import reducer from '../common/store/reducers';
 module.exports = config;
 
 function config($ngReduxProvider, $urlRouterProvider) {
-  $ngReduxProvider.createStoreWith(require('../common/store/reducers'));
+  $ngReduxProvider.createStoreWith(reducer);
   $urlRouterProvider.otherwise('/');
 }
 
