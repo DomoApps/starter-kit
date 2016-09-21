@@ -127,7 +127,7 @@ const config = {
         loader: 'babel',
         query: {
           cacheDirectory: true,
-          presets: ['es2015-loose', 'stage-1'],
+          presets: ['es2015'],
           plugins: ['transform-runtime', 'add-module-exports']
         }
       },
