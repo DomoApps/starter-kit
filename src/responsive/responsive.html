@@ -13,7 +13,7 @@
     <script src="{%= o.htmlWebpackPlugin.options.pkg.cdnDependencies[dependency] %}"></script>
   {% } %}
 </head>
-<body ng-cloak ng-app="da.responsive">
+<body ng-cloak ng-app="da.responsive" ng-strict-di>
   <div id="appContainer">
     <h1>Responsive</h1>
     <div ui-view></div>
