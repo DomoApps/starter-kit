@@ -106,7 +106,7 @@
   "config": {
     "AppTeam6": {
       "framework": "starter-kit",
-      "frameworkVersion": "0.0.7",
+      "frameworkVersion": "0.0.8",
       "features": []
     },
     "commitizen": {
