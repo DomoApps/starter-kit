@@ -123,12 +123,7 @@ const config = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          cacheDirectory: true,
-          presets: ['es2015'],
-          plugins: ['transform-runtime', 'add-module-exports']
-        }
+        loader: 'awesome-typescript-loader',
       },
       {
         test: /\.css$/,

@@ -25,6 +25,7 @@
     "@domoinc/da-plop": "^4.1.0",
     "angular-mocks": "^1.5.8",
     "autoprefixer": "^6.1.2",
+    "awesome-typescript-loader": "^1.1.1",
     "babel-core": "^6.3.17",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.1",
@@ -86,6 +87,7 @@
     "shelljs": "^0.5.3",
     "sinon": "^1.17.2",
     "style-loader": "^0.13.0",
+    "typescript": "^1.8.10",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "^1.14.0"
