@@ -3,7 +3,7 @@ require('./store/reducers');
 require('./store/constants');
 require.context('./store/actions', true, /\.actions\.js$/);
 
-import angular from 'angular';
+import * as angular from 'angular';
 import { attachAll } from '../../other/boilerplate-utils.js';
 const ngModule = angular.module('da.common', []);
 

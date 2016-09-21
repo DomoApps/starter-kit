@@ -1,6 +1,6 @@
 require('./desktop.css');
 
-import angular from 'angular';
+import * as angular from 'angular';
 import 'ng-redux';
 import { attachAll, getNgModuleNames } from '../../other/boilerplate-utils.js';
 
@@ -8,7 +8,7 @@ const ngDependencies = [
   'ui.router',
   'ngAnimate',
   'ngRedux',
-  require('../common').name,
+  require('../common').default.name,
   // Add additional external Angular dependencies here
 ];
 
