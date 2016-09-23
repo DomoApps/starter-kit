@@ -22,8 +22,8 @@ function update() {
   }
 
   shelljs.exec('git fetch generator');
-  shelljs.exec('git merge --no-commit generator/master');
-  
+  shelljs.exec('git merge --squash --no-commit generator/master');
+
   console.log(`${chalk.yellow('WARNING:')} Make sure to review the changes with ${chalk.bold('git diff HEAD')} before ` +
             `committing, so no accidental changes are made to your app.`);
 }
