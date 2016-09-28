@@ -127,7 +127,12 @@ const config = {
         query: {
           cacheDirectory: true,
           presets: ['es2015'],
-          plugins: ['transform-runtime', 'add-module-exports']
+          /**
+           * transform-runtime: deduplicate babel helpers by creating a babel-runtime module
+           * add-module-exports: fix to eliminate require('X').default
+           * object-assign: polyfill for Object.assign() (for IE)
+           */
+          plugins: ['transform-runtime', 'add-module-exports', 'transform-object-assign']
         }
       },
       {
