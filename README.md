@@ -1,5 +1,6 @@
 
 # Domo Apps Starter Kit
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d11e4ba37e2f4f499b118241041397ff)](https://www.codacy.com/app/sbeverly/starter-kit?utm_source=github.com&utm_medium=referral&utm_content=DomoApps/starter-kit&utm_campaign=badger)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## Prerequisites
