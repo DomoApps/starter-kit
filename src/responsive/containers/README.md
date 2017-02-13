@@ -1,2 +1,0 @@
-- Place responsive specific containers here.
-- These containers are common across routes i.e. modals, drawers, etc.

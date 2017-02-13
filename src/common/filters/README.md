@@ -1,1 +1,0 @@
-Place Angular filter objects here.

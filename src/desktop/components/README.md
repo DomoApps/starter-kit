@@ -1,2 +1,0 @@
-- Place desktop specific components here.
-- These components are common accross multiple routes.
