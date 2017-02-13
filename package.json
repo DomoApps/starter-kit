@@ -22,6 +22,8 @@
   "repository": "https://github.com/DomoApps/starter-kit",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
+    "jest": "^18.1.0",
+    "ts-jest": "^18.0.3",
     "tslint": "^4.4.2",
     "tslint-eslint-rules": "^3.3.0",
     "tslint-react": "^2.3.0",
