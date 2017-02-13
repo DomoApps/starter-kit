@@ -1,7 +1,7 @@
 {
   "extends": [
     "tslint-react",
-    "ts-lint-eslint-rules"
+    "tslint-eslint-rules"
   ],
   "rules": {
     "align": [
