@@ -1,6 +1,4 @@
-module.exports = init;
-
-function init() {
+export default function init() {
 	// Add any app initialization code here.
 }
 

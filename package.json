@@ -87,12 +87,13 @@
     "shelljs": "^0.5.3",
     "sinon": "^1.17.2",
     "style-loader": "^0.13.0",
-    "typescript": "^1.8.10",
+    "typescript": "^2.0.3",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "@types/angular": "^1.5.15",
     "enquire.js": "^2.1.1",
     "ng-redux": "^3.3.3",
     "ryuu.js": "^2.5.4"
