@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "jsx": "react",
+    "noImplicitAny": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "types": [
+      "react",
+      "react-dom",
+      "react-redux",
+      "redux",
+      "node"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

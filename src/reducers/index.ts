@@ -11,4 +11,5 @@ import { combineReducers } from 'redux';
 
 const reducers = {};
 const combined = combineReducers(reducers);
+
 export default combined;

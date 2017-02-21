@@ -1,20 +1,25 @@
-// Include dependencies
-require('babel-register');
-const getConfig = require('./other/webpack.config.es6');
+const getDefaultConfig = require('@appteam6/webpack-config');
+const path = require('path');
+const webpack = require('webpack');
+const pkg = require('./package.json');
 
-/**
- * Configure your webpack setup here. These settings can be changed at any time.
- *
- * Read more on the wiki:
- * https://github.com/DomoApps/starter-kit/wiki/Webpack-Configuration
- */
-module.exports = getConfig({
-  includeDesktopView: false,
-  includeResponsiveView: true,
-  externals: {
-    // Include your app's extra externals here
-  },
-  loaders: [
-    // Include your app's extra loaders here
-  ]
-});
+module.exports = (env = {}) => {
+  let config = getDefaultConfig(env);
+
+  // modify the default config as needed
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(pkg.version),
+      APP_NAME: JSON.stringify(pkg.name)
+    })
+  );
+
+  // config.externals = {
+  //   react: 'react',
+  //   'react-dom': 'react-dom',
+  //   'react-redux': 'react-redux',
+  //   redux: 'redux'
+  // };
+
+  return config;
+};

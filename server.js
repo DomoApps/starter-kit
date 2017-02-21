@@ -1,2 +1,2 @@
-require('babel-register');
-module.exports = require('./other/server.es6');
+const config = require('./webpack.config')({dev: true});
+require('@appteam6/dev-server')(config);
