@@ -6,9 +6,13 @@ import configureStore from './stores/configure-store';
 
 const store = configureStore();
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app'),
-);
+const render = (Component) => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <Component />
+    </Provider>,
+    document.getElementById('app'),
+  );
+};
+
+render(App);
