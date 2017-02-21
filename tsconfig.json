@@ -16,7 +16,11 @@
       "react-redux",
       "redux",
       "node"
-    ]
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["./components/*"]
+    }
   },
   "exclude": [
     "node_modules",
