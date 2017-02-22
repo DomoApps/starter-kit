@@ -15,6 +15,7 @@
       "react-dom",
       "react-redux",
       "redux",
+      "react-css-modules",
       "node"
     ],
     "baseUrl": "src",
