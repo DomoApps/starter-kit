@@ -16,6 +16,8 @@
       "react-redux",
       "redux",
       "react-css-modules",
+      "mocha",
+      "chai",
       "node"
     ],
     "baseUrl": "src",
