@@ -5,17 +5,20 @@ module.exports = config => {
   const cdns = Object.values(pkg.cdnDependencies);
 
   const webpackConfig = require('./webpack.config')();
+  const testPattern = 'src/**/*.spec.+(ts|tsx)';
 
   config.set({
     frameworks: ['mocha', 'chai'],
     files: [
       ...cdns,
-      'src/**/*.spec.ts',
-      'src/**/*.spec.tsx'
+      testPattern,
     ],
     preprocessors: {
-      'src/**/*.spec.ts': ['webpack', 'sourcemap'],
-      'src/**/*.spec.tsx': ['webpack', 'sourcemap']
+      [testPattern]: ['webpack', 'sourcemap'],
+    },
+    mime: {
+      // workaround for typescript mime type issue https://github.com/angular/angular-cli/issues/2125
+      'text/x-typescript': ['ts','tsx']
     },
     webpack: webpackConfig,
     webpackMiddleware: {
