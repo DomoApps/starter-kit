@@ -1,0 +1,2 @@
+- Place static assets here such as images. These will be copied into the /dist folder
+- These will be accessible from the same location (i.e. /assets/my-image.png)

@@ -1,0 +1,2 @@
+- Place components here that could potentially be pulled out into a separate library
+- These are dumb components that aren't tied to specific data queries, etc.
