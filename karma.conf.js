@@ -6,16 +6,16 @@ module.exports = config => {
 
   const webpackConfig = require('./webpack.config')();
 
-  const testPattern = 'src/**/*.spec.tsx'
-
   config.set({
     frameworks: ['mocha', 'chai'],
     files: [
       ...cdns,
-      testPattern
+      'src/**/*.spec.ts',
+      'src/**/*.spec.tsx'
     ],
     preprocessors: {
-      [testPattern]: ['webpack', 'sourcemap']
+      'src/**/*.spec.ts': ['webpack', 'sourcemap'],
+      'src/**/*.spec.tsx': ['webpack', 'sourcemap']
     },
     webpack: webpackConfig,
     webpackMiddleware: {

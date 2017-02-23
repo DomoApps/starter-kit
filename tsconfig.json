@@ -10,16 +10,6 @@
     "removeComments": false,
     "sourceMap": true,
     "inlineSourceMap": false,
-    "types": [
-      "react",
-      "react-dom",
-      "react-redux",
-      "redux",
-      "react-css-modules",
-      "mocha",
-      "chai",
-      "node"
-    ],
     "baseUrl": "src",
     "paths": {
       "components/*": ["./components/*"]
