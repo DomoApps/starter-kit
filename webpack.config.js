@@ -14,12 +14,10 @@ module.exports = (env = {}) => {
     })
   );
 
-  // config.externals = {
-  //   react: 'react',
-  //   'react-dom': 'react-dom',
-  //   'react-redux': 'react-redux',
-  //   redux: 'redux'
-  // };
+  // Here you can modify the Webpack config to your heart's content
+  // For example, if you need to add externals:
+  // config.externals.react = 'react';
+  // config.externals['react-dom'] = 'react-dom';
 
   return config;
 };
