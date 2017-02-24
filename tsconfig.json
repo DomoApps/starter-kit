@@ -12,7 +12,10 @@
     "inlineSourceMap": false,
     "baseUrl": "src",
     "paths": {
-      "components/*": ["./components/*"]
+      "components/*": ["./components/*"],
+      "actions/*": ["./actions/*"],
+      "styles/*": ["./styles/*"],
+      "~/*": ["./*"]
     }
   },
   "exclude": [
