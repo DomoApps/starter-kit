@@ -63,7 +63,7 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 
 ## Technology
 - [Webpack](http://webpack.github.io/)
-- [ES2015 via Babel](https://babeljs.io/docs/learn-es2015/)
+- [ES2015 via Typescript](https://babeljs.io/docs/learn-es2015/)
 - [Postcss & Precss](https://github.com/jonathantneal/precss)
 - [Angular 1.x](https://angularjs.org/)
 - [Redux](http://redux.js.org/docs/introduction/) and [ngRedux](https://github.com/angular-redux/ng-redux)
@@ -74,7 +74,7 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
   + [mocha](https://mochajs.org/)
   + [chai](http://chaijs.com/)
 - Code Linting
-  + [eslint]() - For JavaScript
+  + [tslint]() - For JavaScript
 - Dev Server with auto-reload
   + [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)
   + Proxy for data service
@@ -85,8 +85,13 @@ If you would like to add/edit/remove a dependency from a CDN, you'll need to add
 - Git Release Automation
 - [.editorconfig](http://editorconfig.org/)
 - Plop
-  + $ plop [type e.g. directive, factory, filter, route]
+  + $ plop [type e.g. component, container, reducer]
   + [da-plop](https://git.empdev.domo.com/AppTeam6/da-plop)
+- Aliases
+  + actions => `src/actions`
+  + components => `src/components`
+  + styles => `src/styles`
+  + ~ => `src`
 
 ## Domo App Specific Features
 - Platform Detection / Routing
@@ -165,6 +170,7 @@ If either of these files is missing, or if the manifest.json file is malformed, 
 - For CSS rules, please see [Reasonable CSS](http://rscss.io/)
 - For JS rules, please see [AirBnB's styleguide](https://github.com/airbnb/javascript)
 - For Angular rules, please see [John Papa's styleguide](https://github.com/johnpapa/angular-styleguide)
+- Our TSLint is loosely based on AirBnB's eslint rules found in their styleguide
 
 ## Future Plans
 - [x] configurable proxy
