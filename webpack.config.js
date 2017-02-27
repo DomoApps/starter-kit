@@ -16,8 +16,10 @@ module.exports = (env = {}) => {
 
   // Here you can modify the Webpack config to your heart's content
   // For example, if you need to add externals:
-  // config.externals.react = 'react';
-  // config.externals['react-dom'] = 'react-dom';
+  // config.externals.react = 'React';
+  // config.externals['react-dom'] = 'ReactDOM';
+  config.externals.react = 'React';
+  config.externals['react-dom'] = 'ReactDOM';
 
   return config;
 };
