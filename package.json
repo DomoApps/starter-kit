@@ -15,7 +15,8 @@
     "version": "npm run build && npm run changelog && git add -A CHANGELOG.md",
     "postversion": "git push && git push --tags",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
-    "upload": "npm run build && cd dist/ && domo publish && cp manifest.json ../domo/ && cd ..",
+    "clean": "rm -rf node_modules && npm install",
+    "upload": "npm run clean && npm run build && cd dist/ && domo publish && cp manifest.json ../domo/ && cd ..",
     "update-tools": "node other/update.js"
   },
   "author": "AppTeam6 <Squad.AppTeam6@domo.com>",
