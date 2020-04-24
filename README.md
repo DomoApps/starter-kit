@@ -1,6 +1,6 @@
-
 # Domo Apps Starter Kit
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDomoApps%2Fstarter-kit.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FDomoApps%2Fstarter-kit?ref=badge_shield)
 
 ## Prerequisites
 1. [domo-cli](https://domoapps.herokuapp.com/dev-kit)
@@ -212,3 +212,7 @@ These widgets are available to download as dependencies to your project via [NPM
    .config('width', 500)
    .draw(data);
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDomoApps%2Fstarter-kit.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDomoApps%2Fstarter-kit?ref=badge_large)
